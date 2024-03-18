@@ -1,0 +1,5 @@
+certifi==2024.2.2
+cmu-graphics==1.1.32
+pillow==10.2.0
+pycairo==1.26.0
+pygame==2.5.2
