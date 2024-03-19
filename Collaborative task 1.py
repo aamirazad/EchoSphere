@@ -94,13 +94,17 @@ def sign_in_page():
     handlePage(app.signIn)
     app.text = ""
 
-def user_login_page():
-    handlePage(app.tweetPage)
-    app.name = textBox.value
-
 def go_home_page():
     handlePage(app.tweetPage)
     app.header.visible=True
+
+def submit():
+    handlePage(app.tweetPage)
+    app.name = textBox.value
+
+
+
+
 
 
 
@@ -111,7 +115,7 @@ def onMousePress(mouseX,mouseY):
     elif signInButton.hits(mouseX,mouseY) and signInButton.visible:
         sign_in_page()
     elif (ForYou.hits(mouseX,mouseY) and ForYou.visible) or (Logo.hits(mouseX,mouseY) and Logo.visible):
-        handlePage(app.tweetPage)
+        go_home_page()
     elif Backarrow.hits(mouseX,mouseY) and Backarrow.visible:
         handlePage(app.header)
         handlePage(app.tweetPage)
