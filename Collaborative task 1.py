@@ -85,34 +85,37 @@ def handlePage(page):
     app.tweetBox.visible = False
     app.signIn.visible = False
     
-    if page == app.signIn:
-        app.text = ""
-    if page == app.tweetBox:
-        app.header.visible=False
-    
     page.visible = True
 
-def user_login():
+def user_login_page():
     handlePage(app.tweetPage)
     app.name = textBox.value
 
-def go_home():
-    handlePage(app.header)
+def go_home_page():
+    handlePage(app.tweetPage)
     app.header.visible=True
+
+def sign_in_page():
+    handlePage(app.signIn)
+    app.text = ""
+
+def new_tweet():
+     handlePage(app.tweetBox)
+     app.header.visible=False
 
 # manage mouse clicks
 def onMousePress(mouseX,mouseY):
     if new_post.hits(mouseX,mouseY) and new_post.visible:
         handlePage(app.tweetBox)
     elif signInButton.hits(mouseX,mouseY) and signInButton.visible:
-        handlePage(app.signIn)
+        sign_in_page()
     elif (ForYou.hits(mouseX,mouseY) and ForYou.visible) or (Logo.hits(mouseX,mouseY) and Logo.visible):
         handlePage(app.tweetPage)
     elif Backarrow.hits(mouseX,mouseY) and Backarrow.visible:
         handlePage(app.header)
         handlePage(app.tweetPage)
     elif submitButton.hits(mouseX,mouseY) and submitButton.visible:
-        user_login()
+        user_login_page()
 
 # handle changes
 def onStep():
