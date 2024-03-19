@@ -8,7 +8,7 @@ signInButton = Image('sign_in2.png', 5,5)
 signInButton.centerX = 20
 signInButton.centerY = 20
 
-seperator = Line( 0,80, 400,80, fill='black',opacity=35)
+seperator = Line(0,80, 400,80, fill='black',opacity=35)
 ForYou= Label('For you', 125,55, size=15,bold=True)
 Following=Label('Following', 265,55, size=15,bold=True)
 
