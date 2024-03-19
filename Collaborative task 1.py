@@ -80,7 +80,6 @@ def printTweets():
 
 # ui manager
 def handlePage(page):
-    printTweets()
     app.tweetPage.visible = False
     app.tweetBox.visible = False
     app.signIn.visible = False
