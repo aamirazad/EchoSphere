@@ -86,6 +86,14 @@ def handlePage(page):
     
     page.visible = True
 
+def new_tweet():
+    handlePage(app.tweetBox)
+    app.header.visible=False
+
+def sign_in_page():
+    handlePage(app.signIn)
+    app.text = ""
+
 def user_login_page():
     handlePage(app.tweetPage)
     app.name = textBox.value
@@ -94,18 +102,12 @@ def go_home_page():
     handlePage(app.tweetPage)
     app.header.visible=True
 
-def sign_in_page():
-    handlePage(app.signIn)
-    app.text = ""
 
-def new_tweet():
-     handlePage(app.tweetBox)
-     app.header.visible=False
 
 # manage mouse clicks
 def onMousePress(mouseX,mouseY):
     if new_post.hits(mouseX,mouseY) and new_post.visible:
-        handlePage(app.tweetBox)
+        new_tweet()
     elif signInButton.hits(mouseX,mouseY) and signInButton.visible:
         sign_in_page()
     elif (ForYou.hits(mouseX,mouseY) and ForYou.visible) or (Logo.hits(mouseX,mouseY) and Logo.visible):
