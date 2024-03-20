@@ -8,7 +8,19 @@
       "openFiles": [
         "Collaborative task 1.py"
       ]
+    },
+    "vscode": {
+      "extensions": [
+        "vsls-contrib.gitdoc",
+        "ms-python.python"
+      ]
     }
   },
-  "postCreateCommand": "pip3 install --user -r requirements.txt"
+  "forwardPorts": [6080],
+  "portsAttributes": {
+    "6080": {
+      "label": "desktop"
+    }
+  },
+  "postCreateCommand": ["sudo apt update", "sudo apt install -y libcairo2-dev pkg-config python3-dev", "pip install -r /workspaces/EchoSphere/requirements.txt"]
 }

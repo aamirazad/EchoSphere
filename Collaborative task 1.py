@@ -8,7 +8,7 @@ signInButton = Image('sign_in2.png', 5,5)
 signInButton.centerX = 20
 signInButton.centerY = 20
 
-seperator = Line( 0,80, 400,80, fill='black',opacity=35)
+seperator = Line(0,80, 400,80, fill='black',opacity=35)
 ForYou= Label('For you', 125,55, size=15,bold=True)
 Following=Label('Following', 265,55, size=15,bold=True)
 
@@ -80,39 +80,47 @@ def printTweets():
 
 # ui manager
 def handlePage(page):
-    printTweets()
     app.tweetPage.visible = False
     app.tweetBox.visible = False
     app.signIn.visible = False
     
-    if page == app.signIn:
-        app.text = ""
-    if page == app.tweetBox:
-        app.header.visible=False
-    
     page.visible = True
 
-def user_login():
+def new_tweet():
+    handlePage(app.tweetBox)
+    app.header.visible=False
+
+def sign_in_page():
+    handlePage(app.signIn)
+    app.text = ""
+
+def go_home_page():
+    handlePage(app.tweetPage)
+    app.header.visible=True
+
+def submit():
     handlePage(app.tweetPage)
     app.name = textBox.value
 
-def go_home():
-    handlePage(app.header)
-    app.header.visible=True
+
+
+
+
+
 
 # manage mouse clicks
 def onMousePress(mouseX,mouseY):
     if new_post.hits(mouseX,mouseY) and new_post.visible:
-        handlePage(app.tweetBox)
+        new_tweet()
     elif signInButton.hits(mouseX,mouseY) and signInButton.visible:
-        handlePage(app.signIn)
+        sign_in_page()
     elif (ForYou.hits(mouseX,mouseY) and ForYou.visible) or (Logo.hits(mouseX,mouseY) and Logo.visible):
-        handlePage(app.tweetPage)
+        go_home_page()
     elif Backarrow.hits(mouseX,mouseY) and Backarrow.visible:
         handlePage(app.header)
         handlePage(app.tweetPage)
     elif submitButton.hits(mouseX,mouseY) and submitButton.visible:
-        user_login()
+        user_login_page()
 
 # handle changes
 def onStep():
