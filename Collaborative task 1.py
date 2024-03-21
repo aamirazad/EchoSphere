@@ -143,7 +143,7 @@ def onKeyPress(key):
         app.text = app.text[:-1]
     elif key == "enter":
         app.text += "/"
-    elif key in list_of_valid_characters and (len(app.text) <= 8 and app.text_box.visible):
+    elif key in list_of_valid_characters and (len(app.text) <= 8 and textBox.visible):
         app.text += key
    
 printTweets()
