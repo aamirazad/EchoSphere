@@ -34,9 +34,9 @@ drafts= Label('Drafts',260,30,size=15,bold=True)
 Post=Group(Oval(330,30,50,20),Label('Post',330,30,size=15, bold=True,fill='white'))
 #textbox
 tweet_circle = Circle(35,95,20)
-tweet_text = Label('What is Happening?!',165,95, size=20,fill='darkgray'),
+app.tweet_text = Label('What is Happening?!',165,95, size=20,fill='darkgray')
 tweet_seperator = Line(0,300,400,300,lineWidth=.25)
-app.tweetBox.add(Backarrow,drafts,Post,tweet_text, tweet_circle, tweet_seperator)
+app.tweetBox.add(Backarrow,drafts,Post, app.tweet_text, tweet_circle, tweet_seperator)
 app.tweetBox.visible = False
 
 # Sign in
@@ -89,6 +89,7 @@ def handlePage(page):
 
 def new_tweet():
     handlePage(app.tweetBox)
+    app.stepsPerSecond = 30
     app.header.visible=False
 
 def sign_in_page():
@@ -125,8 +126,8 @@ def onStep():
     if textBox.visible:
         textBox.value = app.text
         textBox.left = 60
-    elif app.tweetBox.visible:
-        app.tweetBox.value = app.text
+    elif app.tweet_text.visible:
+        app.tweet_text.value = app.text
     else:
         app.stepsPerSecond = 0.1
 
@@ -142,7 +143,7 @@ def onKeyPress(key):
         app.text = app.text[:-1]
     elif key == "enter":
         app.text += "/"
-    elif key in list_of_valid_characters and len(app.text) <= 8:
+    elif key in list_of_valid_characters and (len(app.text) <= 8 and app.text_box.visible):
         app.text += key
    
 printTweets()
