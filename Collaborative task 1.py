@@ -1,5 +1,7 @@
 import os
 from cmu_graphics import *
+import requests
+import datetime as datetime
 
 # UI
 #new by Adrien Coquet from Noun Project (CC BY 3.0)
@@ -15,7 +17,6 @@ Following=Label('Following', 265,55, size=15,bold=True)
 Logo=Image('x_logo.png', 178,-2)
 Logo.width= 45
 Logo.height = 45
-
 
 ## pages
 app.header = Group(signInButton,seperator,ForYou,Following,Logo)
@@ -92,7 +93,9 @@ def new_tweet():
 
 def sign_in_page():
     handlePage(app.signIn)
+    app.stepsPerSecond = 30
     app.text = ""
+    
 
 def go_home_page():
     handlePage(app.tweetPage)
@@ -101,12 +104,6 @@ def go_home_page():
 def submit():
     handlePage(app.tweetPage)
     app.name = textBox.value
-
-
-
-
-
-
 
 # manage mouse clicks
 def onMousePress(mouseX,mouseY):
@@ -120,7 +117,7 @@ def onMousePress(mouseX,mouseY):
         handlePage(app.header)
         handlePage(app.tweetPage)
     elif submitButton.hits(mouseX,mouseY) and submitButton.visible:
-        user_login_page()
+        submit()
 
 # handle changes
 def onStep():
@@ -128,6 +125,11 @@ def onStep():
     if textBox.visible:
         textBox.value = app.text
         textBox.left = 60
+    else:
+        app.stepsPerSecond = 0.1
+        now = datetime.now()
+        now.strftime("%Y-%m-%d %H:%M:%S")
+
 
         
 # handle keypress
