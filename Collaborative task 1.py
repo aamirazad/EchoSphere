@@ -128,8 +128,7 @@ def onStep():
         textBox.left = 60
     else:
         app.stepsPerSecond = 0.1
-        now = datetime.now()
-        now.strftime("%Y-%m-%d %H:%M:%S")
+
 
 
         
@@ -141,7 +140,7 @@ def onKeyPress(key):
     if key == "backspace":
         app.text = app.text[:-1]
     elif key == "enter":
-        app.text += "\n"
+        app.text += "/"
     elif key in list_of_valid_characters and len(app.text) <= 8:
         app.text += key
    
