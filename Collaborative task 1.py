@@ -33,11 +33,10 @@ Backarrow=Group(Polygon(12,25,25,15,25,35),Line(25,25,45,25))
 drafts= Label('Drafts',260,30,size=15,bold=True)
 Post=Group(Oval(330,30,50,20),Label('Post',330,30,size=15, bold=True,fill='white'))
 #textbox
-tweet_text=Group(
-    Circle(35,95,20),
-    Label('What is Happening?!',165,95, size=20,fill='darkgray'),
-    Line(0,300,400,300,lineWidth=.25))
-app.tweetBox.add(Backarrow,drafts,Post,tweet_text)
+tweet_circle = Circle(35,95,20)
+tweet_text = Label('What is Happening?!',165,95, size=20,fill='darkgray'),
+tweet_seperator = Line(0,300,400,300,lineWidth=.25)
+app.tweetBox.add(Backarrow,drafts,Post,tweet_text, tweet_circle, tweet_seperator)
 app.tweetBox.visible = False
 
 # Sign in
