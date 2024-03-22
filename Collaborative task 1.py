@@ -155,6 +155,5 @@ def onKeyPress(key):
             if len(app.text) <= 8 and textBox.visible:
                 exit
             app.text += key
-   
 printTweets()
 cmu_graphics.run()
