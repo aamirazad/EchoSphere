@@ -55,17 +55,17 @@ app.signIn.visible = False
 tweets = [{
     "username": "MrBeast",
     "icon": "Mrbeastlogo.png",
-    "text": "hello world"
+    "text": "DailyWord"
 },
 {
     "username": "Yvan",
     "icon": "Mrbeastlogo.png",
-    "text": "x/twitter"
+    "text": "AamirAzad"
 },
 {
     "username": "Aamir",
     "icon": "Mrbeastlogo.png",
-    "text": "is bad"
+    "text": "is HOT!!!"
 },
 ]
 
