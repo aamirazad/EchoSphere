@@ -144,7 +144,7 @@ def onKeyPress(key):
             if len(app.text) <= 8 and textBox.visible:
                 exit
             app.text += key
-    if app.tweetbox.visible:
+    if app.tweetBox.visible:
         valid_characters = r'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz'
         list_of_valid_characters = list(valid_characters)
         if key == "backspace":
