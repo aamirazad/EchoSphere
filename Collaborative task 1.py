@@ -89,6 +89,7 @@ def handlePage(page):
     app.tweetPage.visible = False
     app.tweetBox.visible = False
     app.signIn.visible = False
+    new_post.visible = True
     
     page.visible = True
 
@@ -111,7 +112,6 @@ def go_home_page():
 def submit():
     handlePage(app.tweetPage)
     app.name = textBox.value
-    new_post.visible = True
 
 # manage mouse clicks
 def onMousePress(mouseX,mouseY):
