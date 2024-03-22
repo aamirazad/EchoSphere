@@ -130,9 +130,6 @@ def onStep():
         app.tweet_text.value = app.text
     else:
         app.stepsPerSecond = 0.1
-
-
-
         
 # handle keypress
 def onKeyPress(key):
