@@ -101,6 +101,7 @@ def sign_in_page():
     handlePage(app.signIn)
     app.stepsPerSecond = 30
     app.text = ""
+    new_post.visible = False
     
 
 def go_home_page():
@@ -110,6 +111,7 @@ def go_home_page():
 def submit():
     handlePage(app.tweetPage)
     app.name = textBox.value
+    new_post.visible = True
 
 # manage mouse clicks
 def onMousePress(mouseX,mouseY):
