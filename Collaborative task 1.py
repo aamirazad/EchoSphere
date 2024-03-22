@@ -142,18 +142,18 @@ def onStep():
 def onKeyPress(key):
     valid_characters = ""
     if app.signIn.visible:
-        valid_characters = r'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz'
+        valid_characters = r'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789'
     elif app.tweetBox.visible:
-        valid_characters = r'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz'
+        valid_characters = r'!"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~'
     
     list_of_valid_characters = list(valid_characters)
-    if key == "backspace":
-        app.text = app.text[:-1]
-    elif key == "enter":
-        app.text += "/"
-    elif key in list_of_valid_characters and (len(app.text) <= 8 and textBox.visible):
-        if len(app.text) <= 8 and textBox.visible:
-            exit
-        app.text += key
+        if key == "backspace":
+            app.text = app.text[:-1]
+        elif key == "enter":
+            app.text += "/"
+        elif key in list_of_valid_characters and (len(app.text) <= 8 and textBox.visible):
+            if len(app.text) <= 8 and textBox.visible:
+                exit
+            app.text += key
 printTweets()
 cmu_graphics.run()
