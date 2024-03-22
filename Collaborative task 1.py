@@ -128,6 +128,7 @@ def onStep():
         textBox.left = 60
     elif app.tweetBox.visible:
         app.tweet_text.value = app.text
+        print(app.text)
     else:
         app.stepsPerSecond = 0.1
         
