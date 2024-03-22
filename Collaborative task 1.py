@@ -43,10 +43,14 @@ app.tweetBox.visible = False
 welcome = Label("Welcome to X",140,120, size=30)
 nameBox = Rect(50,150,300,50, fill=None, border="black")
 textBox= Label("Enter your name here", 100,170,size=30, font="grenze")
-submitButton=Group( Rect(250,225,100,20),Label('Sign In',300,235,fill='white',bold=True))
+submitButton=Group( Rect(250,325,100,20),Label('Sign In',300,335,fill='white',bold=True))
 app.signIn.add(welcome,nameBox, textBox,submitButton)
 app.signIn.visible = False
-
+#Vecteezy :denyzdrozd
+app.url='cmu://761023/29833614/add-user-icon-registration-illustration-sign-avatar-symbol-new-profile-logo-vector__1___1_-removebg-preview.png'
+Picture= Image(app.url,50,225)
+SigninCircle=Circle(Picture.centerX-2.5,Picture.centerY,30,fill='darkgray',opacity=75).toBack()
+Instruction=Label('Insert Picture',Picture.centerX+95,Picture.centerY, bold=True, size=15, font='monospace' )
 tweets = [{
     "username": "MrBeast",
     "icon": "Mrbeastlogo.png",
