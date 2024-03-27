@@ -1,7 +1,7 @@
 import os
 from cmu_graphics import *
 import datetime as datetime
-import mysql.connector
+import sqlite3
 
 # UI
 #new by Adrien Coquet from Noun Project (CC BY 3.0)
