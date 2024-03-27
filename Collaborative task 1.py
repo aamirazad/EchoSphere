@@ -61,8 +61,8 @@ db = Prisma()
 create = db.tweet.create(
         {
             'title': 'Hello from prisma!',
-            'desc': 'Prisma is a database toolkit and makes databases easy.',
-            'published': True,
+            'content': 'Prisma is a database toolkit and makes databases easy.',
+            'username': "Aamir",
         }
     )
 
