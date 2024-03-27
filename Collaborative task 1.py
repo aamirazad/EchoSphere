@@ -63,7 +63,7 @@ async def printTweets():
     app.tweetPage.clear()    
     db = Prisma()
     await db.connect()
-    tweet = await db.post 
+    tweet = await db.tweet.find_many()
 
     for tweet in tweets:        
         icon = Image(tweet["icon"], 20,yVal-30)        
