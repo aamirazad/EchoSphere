@@ -14,6 +14,11 @@ model Tweet {
   id         String   @id @default(cuid())
   created_at DateTime @default(now())
   title      String
+  username   String
   published  Boolean
-  desc       String?
+}
+
+model Users {
+  id         String   @id @default(cuid())
+  username   String
 }
