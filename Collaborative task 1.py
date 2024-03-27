@@ -165,4 +165,5 @@ def onKeyPress(key):
             exit
         app.text += key
 printTweets()
-cmu_graphics.run()
+
+asyncio(cmu_graphics.run())
