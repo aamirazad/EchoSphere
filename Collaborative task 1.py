@@ -58,11 +58,13 @@ app.signIn.visible = False
 #Vecteezy :denyzdrozd
 
 # manage tweet group
-def printTweets():    
+async def printTweets():    
     yVal = 120    
     app.tweetPage.clear()    
     db = Prisma()
-    
+    await db.connect()
+    tweet = await db.post 
+
     for tweet in tweets:        
         icon = Image(tweet["icon"], 20,yVal-30)        
         username = Label(tweet["username"], 80, yVal-30,font='montserrat',bold=True)
