@@ -1,12 +1,7 @@
 import os
 from cmu_graphics import *
 import datetime as datetime
-import asyncio
-from prisma import Prisma
-
-## DATABASE INIT
-
-
+import mysql.connector
 
 # UI
 #new by Adrien Coquet from Noun Project (CC BY 3.0)
@@ -57,21 +52,7 @@ app.signIn.add(welcome,nameBox, textBox,submitButton,Picture,SigninCircle,Instru
 app.signIn.visible = False
 #Vecteezy :denyzdrozd
 
-db = Prisma()
-db.connect()
-create = db.tweet.create(
-        {
-            'title': 'Hello from prisma!',
-            'content': 'Prisma is a database toolkit and makes databases easy.',
-            'username': "Aamir",
-        }
-)
-db.disconnect()
-
-db = Prisma()
-db.connect()
-print(db.tweet.find_many())
-db.disconnect()
+### INIT DATABASE
 
 
 # manage tweet group
@@ -166,4 +147,4 @@ def onKeyPress(key):
         app.text += key
 printTweets()
 
-asyncio(cmu_graphics.run())
+cmu_graphics.run()
