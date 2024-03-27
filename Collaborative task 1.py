@@ -57,6 +57,16 @@ app.signIn.add(welcome,nameBox, textBox,submitButton,Picture,SigninCircle,Instru
 app.signIn.visible = False
 #Vecteezy :denyzdrozd
 
+db = Prisma()
+create = db.tweet.create(
+        {
+            'title': 'Hello from prisma!',
+            'desc': 'Prisma is a database toolkit and makes databases easy.',
+            'published': True,
+        }
+    )
+
+
 # manage tweet group
 async def printTweets():    
     yVal = 120    
