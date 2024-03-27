@@ -1,13 +1,9 @@
 import os
 from cmu_graphics import *
-import sqlite3
 import datetime as datetime
 
 ## DATABASE INIT
 
-db = sqlite3.connect("database.db")
-cursor = db.cursor()
-cursor.execute()
 
 
 # UI
