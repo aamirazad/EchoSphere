@@ -54,6 +54,13 @@ app.signIn.visible = False
 
 ### INIT DATABASE
 
+db = mysql.connector.connect(
+  host="localhost",
+  user="username",
+  password="password",
+  database="database"
+)
+
 
 # manage tweet group
 async def printTweets():    
