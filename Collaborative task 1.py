@@ -1,7 +1,14 @@
 import os
 from cmu_graphics import *
-import requests
+import sqlite3
 import datetime as datetime
+
+## DATABASE INIT
+
+db = sqlite3.connect("database.db")
+cursor = db.cursor()
+cursor.execute()
+
 
 # UI
 #new by Adrien Coquet from Noun Project (CC BY 3.0)
