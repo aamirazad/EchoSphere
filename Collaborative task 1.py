@@ -56,6 +56,7 @@ app.signIn.visible = False
 
 connection = sqlite3.connect("database.db")
 print(connection.total_changes)
+cursor.execute("CREATE TABLE Tweets (name TEXT, species TEXT, tank_number INTEGER)")
 
 
 
