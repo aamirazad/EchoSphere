@@ -70,7 +70,8 @@ db.disconnect()
 
 db = Prisma()
 db.connect()
-db.tweet.find_many()
+print(db.tweet.find_many())
+db.disconnect()
 
 
 # manage tweet group
