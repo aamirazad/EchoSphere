@@ -57,27 +57,12 @@ app.signIn.add(welcome,nameBox, textBox,submitButton,Picture,SigninCircle,Instru
 app.signIn.visible = False
 #Vecteezy :denyzdrozd
 
-tweets = [{
-    "username": "MrBeast",
-    "icon": "Mrbeastlogo.png",
-    "text": "DailyWord"
-},
-{
-    "username": "Yvan",
-    "icon": "Mrbeastlogo.png",
-    "text": "AamirAzad"
-},
-{
-    "username": "Aamir",
-    "icon": "Mrbeastlogo.png",
-    "text": "is HOT!!!"
-},
-]
-
 # manage tweet group
 def printTweets():    
     yVal = 120    
     app.tweetPage.clear()    
+    db = Prisma()
+    
     for tweet in tweets:        
         icon = Image(tweet["icon"], 20,yVal-30)        
         username = Label(tweet["username"], 80, yVal-30,font='montserrat',bold=True)
