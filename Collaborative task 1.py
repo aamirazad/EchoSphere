@@ -64,6 +64,10 @@ cursor = db.cursor()
 
 cursor.execute("CREATE DATABASE database")
 
+for x in cursor:
+  print(x)
+
+
 # manage tweet group
 async def printTweets():    
     yVal = 120    
