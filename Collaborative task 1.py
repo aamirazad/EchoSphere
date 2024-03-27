@@ -56,7 +56,7 @@ app.signIn.visible = False
 
 connection = sqlite3.connect("database.db")
 print(connection.total_changes)
-connection.execute("CREATE TABLE Tweets (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, content TEXT NOT NULL, date_created INTEGER)")
+connection.execute("CREATE TABLE IF NOT EXISTS Tweets (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, content TEXT NOT NULL, date_created INTEGER)")
 
 
 
