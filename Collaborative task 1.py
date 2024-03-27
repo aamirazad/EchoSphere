@@ -61,6 +61,10 @@ db = mysql.connector.connect(
   database="database"
 )
 
+cursor = db.cursor()
+
+mycursor.execute("CREATE DATABASE mydatabase")
+
 
 # manage tweet group
 async def printTweets():    
