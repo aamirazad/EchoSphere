@@ -58,13 +58,19 @@ app.signIn.visible = False
 #Vecteezy :denyzdrozd
 
 db = Prisma()
+db.connect()
 create = db.tweet.create(
         {
             'title': 'Hello from prisma!',
             'content': 'Prisma is a database toolkit and makes databases easy.',
             'username': "Aamir",
         }
-    )
+)
+db.disconnect()
+
+db = Prisma()
+db.connect()
+db.tweet.find_many()
 
 
 # manage tweet group
