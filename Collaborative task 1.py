@@ -155,7 +155,7 @@ def onKeyPress(key):
     elif key == "enter":
         app.text += "/"
     elif key in list_of_valid_characters:
-        if not (len(app.text) <= 8 and textBox.visible):
+        if (len(app.text) <= 8 and textBox.visible):
             app.text += key
 printTweets()
 
