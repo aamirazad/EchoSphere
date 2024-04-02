@@ -61,7 +61,8 @@ connection.execute('''
                    CREATE TABLE IF NOT EXISTS Tweets(
                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                    username TEXT NOT NULL,
-                   icon TEXT content TEXT NOT NULL,
+                   icon TEXT,
+                   content TEXT NOT NULL,
                    date_created INTEGER NOT NULL)''')
 connection.commit()
 connection.execute("INSERT INTO Tweets (username, icon, date_created) VALUES (?, ?, ?)", ('MrBeast', 'Mrbeastlogo.png', datetime.now()))
