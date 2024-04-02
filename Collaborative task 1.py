@@ -62,7 +62,7 @@ connection.execute('''
                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                    username TEXT NOT NULL,
                    icon TEXT content TEXT NOT NULL,
-                   date_created INTEGER)''')
+                   date_created INTEGER NOT NULL)''')
 connection.commit()
 connection.execute("INSERT INTO Tweets (username, icon, date_created) VALUES (?, ?)", ('John Doe', 'john@example.com'))
 connection.commit()
