@@ -1,7 +1,8 @@
 import os
 from cmu_graphics import *
-import requests
 import datetime as datetime
+import sqlite3
+from datetime import datetime
 
 # UI
 #new by Adrien Coquet from Noun Project (CC BY 3.0)
@@ -52,36 +53,39 @@ app.signIn.add(welcome,nameBox, textBox,submitButton,Picture,SigninCircle,Instru
 app.signIn.visible = False
 #Vecteezy :denyzdrozd
 
-tweets = [{
-    "username": "MrBeast",
-    "icon": "Mrbeastlogo.png",
-    "text": "DailyWord"
-},
-{
-    "username": "Yvan",
-    "icon": "Mrbeastlogo.png",
-    "text": "AamirAzad"
-},
-{
-    "username": "Aamir",
-    "icon": "Mrbeastlogo.png",
-    "text": "is HOT!!!"
-},
-]
+### INIT DATABASE
+
+connection = sqlite3.connect("database.db")
+connection.execute('''
+                   CREATE TABLE IF NOT EXISTS Tweets(
+                   id INTEGER PRIMARY KEY AUTOINCREMENT,
+                   username TEXT NOT NULL,
+                   icon TEXT,
+                   content TEXT NOT NULL,
+                   date_created INTEGER NOT NULL)''')
+connection.commit()
+connection.close()
+
+def query_db(query):
+    connection = sqlite3.connect("database.db")
+    rows = connection.execute(query).fetchall()
+    return rows
 
 # manage tweet group
 def printTweets():    
     yVal = 120    
-    app.tweetPage.clear()    
-    for tweet in tweets:        
-        icon = Image(tweet["icon"], 20,yVal-30)        
-        username = Label(tweet["username"], 80, yVal-30,font='montserrat',bold=True)
-        message = Label(tweet["text"],username.right,yVal-10,size=20)
-        barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
-        yVal += 67.5
+    app.tweetPage.clear()
+    db = query_db("SELECT * FROM Tweets")
+    for tweet in db:   
+        print(tweet["icon"])
+        # icon = Image(tweet["icon"], 20,yVal-30)        
+        # username = Label(tweet["username"], 80, yVal-30,font='montserrat',bold=True)
+        # message = Label(tweet["text"],username.right,yVal-10,size=20)
+        # barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
+        # yVal += 67.5
         
-        full_tweet = Group(icon,username,message, barline)        
-        app.tweetPage.add(full_tweet)    
+        # full_tweet = Group(icon,username,message, barline)        
+        # app.tweetPage.add(full_tweet)    
 printTweets()
 
 # ui manager
@@ -156,4 +160,5 @@ def onKeyPress(key):
             exit
         app.text += key
 printTweets()
+
 cmu_graphics.run()
