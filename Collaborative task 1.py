@@ -77,7 +77,7 @@ def printTweets():
     app.tweetPage.clear()
     db = query_db("SELECT * FROM Tweets")
     for tweet in db:   
-        print(tweet["icon"])     
+        print(tweet["icon"])
         # icon = Image(tweet["icon"], 20,yVal-30)        
         # username = Label(tweet["username"], 80, yVal-30,font='montserrat',bold=True)
         # message = Label(tweet["text"],username.right,yVal-10,size=20)
