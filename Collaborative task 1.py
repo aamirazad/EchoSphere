@@ -1,4 +1,3 @@
-import os
 from cmu_graphics import *
 import datetime as datetime
 import sqlite3
