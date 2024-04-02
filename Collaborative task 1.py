@@ -154,10 +154,9 @@ def onKeyPress(key):
         app.text = app.text[:-1]
     elif key == "enter":
         app.text += "/"
-    elif key in list_of_valid_characters and (len(app.text) <= 8 and textBox.visible):
-        if len(app.text) <= 8 and textBox.visible:
-            exit
-        app.text += key
+    elif key in list_of_valid_characters:
+        if not (len(app.text) <= 8 and textBox.visible):
+            app.text += key
 printTweets()
 
 cmu_graphics.run()
