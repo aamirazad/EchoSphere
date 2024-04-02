@@ -56,7 +56,12 @@ app.signIn.visible = False
 
 connection = sqlite3.connect("database.db")
 print(connection.total_changes)
-connection.execute("CREATE TABLE IF NOT EXISTS Tweets (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, icon TEXT content TEXT NOT NULL, date_created INTEGER)")
+connection.execute('''
+                   CREATE TABLE IF NOT EXISTS Tweets(
+                   id INTEGER PRIMARY KEY AUTOINCREMENT,
+                   username TEXT NOT NULL,
+                   icon TEXT content TEXT NOT NULL,
+                   date_created INTEGER)''')
 rows = connection.execute("SELECT username, content, content FROM Tweets").fetchall()
 print(rows)
 
