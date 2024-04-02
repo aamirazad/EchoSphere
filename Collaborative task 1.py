@@ -66,6 +66,10 @@ connection.execute('''
 connection.commit()
 connection.close()
 
+def query_db(query, args):
+    connection = sqlite3.connect("database.db")
+    connection.execute("INSERT INTO Tweets (username, icon, content, date_created) VALUES (?, ?, ?, ?)", ('MrBeast', 'Mrbeastlogo.png', "Hello world", datetime.now()))
+
 # manage tweet group
 def printTweets():    
     yVal = 120    
