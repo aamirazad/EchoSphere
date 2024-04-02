@@ -65,7 +65,7 @@ connection.execute('''
                    content TEXT NOT NULL,
                    date_created INTEGER NOT NULL)''')
 connection.commit()
-connection.execute("INSERT INTO Tweets (username, icon, date_created) VALUES (?, ?, ?)", ('MrBeast', 'Mrbeastlogo.png', datetime.now()))
+connection.execute("INSERT INTO Tweets (username, icon, content, date_created) VALUES (?, ?, ?)", ('MrBeast', 'Mrbeastlogo.png', "Hello world", datetime.now()))
 connection.commit()
 rows = connection.execute("SELECT username, content, content FROM Tweets").fetchall()
 print(rows)
