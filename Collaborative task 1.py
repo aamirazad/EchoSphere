@@ -85,8 +85,7 @@ def printTweets():
         #message = Label(tweet["text"],username.right,yVal-10,size=20)
         #barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         #yVal += 67.5
-        
-    full_tweet = Group(icon,username,message, barline)        
+        full_tweet = Group(icon,username,message, barline)        
     app.tweetPage.add(full_tweet)    
 printTweets()
 
