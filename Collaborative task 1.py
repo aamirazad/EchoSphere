@@ -78,7 +78,7 @@ def printTweets():
     yVal = 120    
     app.tweetPage.clear()
     db = manage_db("SELECT * FROM Tweets")
-    full_tweet = Group(icon,username,message, barline)  
+    full_tweet = Group()  
     for tweet in db:   
         print(tweet["icon"])
         icon = Image(tweet["icon"], 20,yVal-30)        
