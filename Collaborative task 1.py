@@ -65,18 +65,21 @@ connection.execute('''
 connection.commit()
 connection.close()
 
-def query_db(query):
+def manage_db(query):
     connection = sqlite3.connect("database.db")
     rows = connection.execute(query).fetchall()
-    return rows
+    return rows'
+
+# manage_db("INSERT INTO Tweets (username, content) VALUES")
+
 
 # manage tweet group
 def printTweets():    
     yVal = 120    
     app.tweetPage.clear()
-    db = query_db("SELECT * FROM Tweets")
+    db = manage_db("SELECT * FROM Tweets")
     for tweet in db:   
-        print(tweet["icon"])
+        print(tweet["username"])
         # icon = Image(tweet["icon"], 20,yVal-30)        
         # username = Label(tweet["username"], 80, yVal-30,font='montserrat',bold=True)
         # message = Label(tweet["text"],username.right,yVal-10,size=20)
@@ -152,8 +155,6 @@ def onKeyPress(key):
     list_of_valid_characters = list(valid_characters)
     if key == "backspace":
         app.text = app.text[:-1]
-    elif key == "enter":
-        app.text += "/"
     elif key in list_of_valid_characters:
         if (len(app.text) <= 8 and textBox.visible):
             app.text += key
