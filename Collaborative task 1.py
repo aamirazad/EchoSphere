@@ -80,8 +80,8 @@ def printTweets():
     db = manage_db("SELECT * FROM Tweets")
     for tweet in db:   
         print(tweet["icon"])
-        # icon = Image(tweet["icon"], 20,yVal-30)        
-        # username = Label(tweet["username"], 80, yVal-30,font='montserrat',bold=True)
+        icon = Image(tweet["icon"], 20,yVal-30)        
+         username = Label(tweet["username"], 80, yVal-30,font='montserrat',bold=True)
         # message = Label(tweet["text"],username.right,yVal-10,size=20)
         # barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         # yVal += 67.5
