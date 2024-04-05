@@ -81,8 +81,8 @@ def printTweets():
     full_tweet = Group()  
     for tweet in db:   
         print(tweet)
-        icon = Image(tweet[3], 20,yVal-30)        
-        username = Label(tweet["username"], 80, yVal-30,font='montserrat',bold=True)
+        icon = Image(tweet[2], 20,yVal-30)        
+        username = Label(tweet[1], 80, yVal-30,font='montserrat',bold=True)
         message = Label(tweet["text"],username.right,yVal-10,size=20)
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         yVal += 67.5
