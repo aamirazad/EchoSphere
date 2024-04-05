@@ -68,7 +68,7 @@ connection.close()
 def manage_db(query):
     connection = sqlite3.connect("database.db")
     rows = connection.execute(query).fetchall()
-    return rows'
+    return rows
 
 # manage_db("INSERT INTO Tweets (username, content) VALUES")
 
