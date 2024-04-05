@@ -80,10 +80,12 @@ def printTweets():
     db = manage_db("SELECT * FROM Tweets")
     full_tweet = Group()  
     for tweet in db:   
-        print(tweet["icon"])
-        icon = Image(tweet["icon"], 20,yVal-30)        
-        username = Label(tweet["username"], 80, yVal-30,font='montserrat',bold=True)
-        message = Label(tweet["text"],username.right,yVal-10,size=20)
+        print(tweet)
+        icon = Image(tweet[2], 20,yVal-30)    
+        icon.width=20  
+        icon.height=20    
+        username = Label(tweet[1], 80, yVal-30,font='montserrat',bold=True)
+        message = Label(tweet[3],username.right,yVal-10,size=20)
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         yVal += 67.5
         full_tweet.add(icon,username,message, barline)
