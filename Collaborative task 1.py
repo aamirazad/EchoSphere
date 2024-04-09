@@ -140,8 +140,10 @@ def onStep():
             line = app.text.splitlines()
             try:
                 app.textBox.value = line[0]
+                app.text = line[0]
             except:
                 app.textBox.value = ""
+            
         
     else:
         app.stepsPerSecond = 0.1
