@@ -37,6 +37,7 @@ tweet_circle = Circle(35,95,20)
 app.line1 = Label('What is Happening?!',165,95, size=20,fill='darkgray')
 app.line2 = Label('',165,120,size=20)
 app.line3 = Label('',200,120,size=20)
+app.list_of_lines = [app.line1, app.line2, app.line3]
 app.tweet_text = Group(app.line1, app.line2, app.line3)
 tweet_seperator = Line(0,300,400,300,lineWidth=.25)
 app.tweetBox.add(Backarrow,drafts,Post, app.tweet_text, tweet_circle, tweet_seperator)
@@ -147,10 +148,9 @@ def onStep():
         app.textBox.left = 60
     elif app.tweetBox.visible:
         lines = app.text.splitlines()
-        lines_object = ["app.lines1", "app.lines2", "app.lines3"]
         for count, line in enumerate(lines):
             try:
-                lines_object[count] = line
+                app.list_of_lines[count] = line
             except:
                 app.tweetText = ""
     else:
