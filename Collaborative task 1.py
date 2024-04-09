@@ -150,7 +150,7 @@ def onStep():
         lines = app.text.splitlines()
         for count, line in enumerate(lines):
             try:
-                app.list_of_lines[count] = line
+                app.list_of_lines[count].value = line
                 print(line)
             except:
                 app.tweetText = ""
