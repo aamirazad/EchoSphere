@@ -136,24 +136,22 @@ def onMousePress(mouseX,mouseY):
 # handle changes
 def onStep():
     #textBox
-    if app.textBox.visible:
-        if app.signIn.visible:
-            line = app.text.splitlines()
+    if app.signIn.visible:
+        line = app.text.splitlines()
+        try:
+            app.textBox.value = line[0]
+            app.text = line[0]
+        except:
+            app.textBox.value = ""
+        app.textBox.left = 60
+    elif app.tweetBox.visible:
+        lines = app.text.splitlines()
+        print(lines)
+        for line, count in enumerate(lines):
             try:
-                app.textBox.value = line[0]
-                app.text = line[0]
+                app.tweetText[count] = line
             except:
-                app.textBox.value = ""
-            app.textBox.left = 60
-        elif app.tweetBox.visible:
-            lines = app.text.splitlines()
-            print(lines)
-            if line:
-                for line, count in enumerate(lines):
-                    try:
-                        app.tweetText[count] = line
-                    except:
-                        app.tweetText = ""
+                app.tweetText = ""
     else:
         app.stepsPerSecond = 0.1
         
