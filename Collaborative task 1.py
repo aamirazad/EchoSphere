@@ -146,10 +146,10 @@ def onStep():
         app.textBox.left = 60
     elif app.tweetBox.visible:
         lines = app.text.splitlines()
-        for line, count in enumerate(lines):
+        for count, line in enumerate(lines):
             try:
-                print(line)
                 app.tweetText[count] = line
+                print(line)
             except:
                 app.tweetText = ""
     else:
