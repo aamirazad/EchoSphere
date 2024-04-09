@@ -34,7 +34,9 @@ drafts= Label('Drafts',260,30,size=15,bold=True)
 Post=Group(Oval(330,30,50,20),Label('Post',330,30,size=15, bold=True,fill='white'))
 #app.textBox
 tweet_circle = Circle(35,95,20)
-app.tweet_text = Label('What is Happening?!',165,95, size=20,fill='darkgray')
+app.tweet_text = Group(
+    Label('What is Happening?!',165,95, size=20,fill='darkgray'),
+    Label('',165,120,size=20))
 tweet_seperator = Line(0,300,400,300,lineWidth=.25)
 app.tweetBox.add(Backarrow,drafts,Post, app.tweet_text, tweet_circle, tweet_seperator)
 app.tweetBox.visible = False
@@ -136,7 +138,6 @@ def onStep():
     #textBox
     if app.textBox.visible:
         if app.signIn.visible:
-            line = [""]
             line = app.text.splitlines()
             try:
                 app.textBox.value = line[0]
@@ -144,6 +145,14 @@ def onStep():
             except:
                 app.textBox.value = ""
             app.textBox.left = 60
+        elif app.tweetBox.visible:
+            lines = app.text.splitlines()
+            if line:
+                for line, count in enumerate(lines):
+                    try:
+                        app.tweetText[count] = line
+                    except:
+                        app.tweetText = ""
     else:
         app.stepsPerSecond = 0.1
         
