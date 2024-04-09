@@ -32,7 +32,7 @@ app.signIn = Group()
 Backarrow=Group(Polygon(12,25,25,15,25,35),Line(25,25,45,25))
 drafts= Label('Drafts',260,30,size=15,bold=True)
 Post=Group(Oval(330,30,50,20),Label('Post',330,30,size=15, bold=True,fill='white'))
-#textbox
+#app.textBox
 tweet_circle = Circle(35,95,20)
 app.tweet_text = Label('What is Happening?!',165,95, size=20,fill='darkgray')
 tweet_seperator = Line(0,300,400,300,lineWidth=.25)
@@ -42,13 +42,13 @@ app.tweetBox.visible = False
 # Sign in
 welcome = Label("Welcome to X",140,120, size=30)
 nameBox = Rect(50,150,300,50, fill=None, border="black")
-textBox= Label("Enter your name here", 100,170,size=30, font="grenze")
+app.textBox= Label("Enter your name here", 100,170,size=30, font="grenze")
 submitButton=Group( Rect(250,325,100,20),Label('Sign In',300,335,fill='white',bold=True))
 Picture= Image('Aamir Azad.png',50,225)
 SigninCircle=Circle(Picture.centerX-2.5,Picture.centerY,30,fill='darkgray',opacity=45)
 SigninCircle.toBack()
 Instruction=Label('Insert Picture',Picture.centerX+95,Picture.centerY, bold=True, size=15, font='monospace' )
-app.signIn.add(welcome,nameBox, textBox,submitButton,Picture,SigninCircle,Instruction)
+app.signIn.add(welcome,nameBox, app.textBox,submitButton,Picture,SigninCircle,Instruction)
 app.signIn.visible = False
 #Vecteezy :denyzdrozd
 
@@ -116,7 +116,7 @@ def go_home_page():
 
 def submit():
     handlePage(app.tweetPage)
-    app.name = textBox.value
+    app.name = app.textBox.value
 
 # manage mouse clicks
 def onMousePress(mouseX,mouseY):
@@ -134,10 +134,10 @@ def onMousePress(mouseX,mouseY):
 
 # handle changes
 def onStep():
-    #textbox
-    if textBox.visible:
-        textBox.value = app.text
-        textBox.left = 60
+    #textBox
+    if app.textBox.visible:
+        app.textBox.value = app.text
+        app.textBox.left = 60
     elif app.tweet_text.visible:
         app.tweet_text.value = app.text
     else:
@@ -155,7 +155,7 @@ def onKeyPress(key):
     if key == "backspace":
         app.text = app.text[:-1]
     elif key in list_of_valid_characters:
-        if (len(app.text) <= 8 and textBox.visible):
+        if (len(app.text) <= 8 and app.textBox.visible):
             app.text += key
 printTweets()
 
