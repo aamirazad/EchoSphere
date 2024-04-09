@@ -143,7 +143,6 @@ def onStep():
                 app.text = line[0]
             except:
                 app.textBox.value = ""
-            
         
     else:
         app.stepsPerSecond = 0.1
