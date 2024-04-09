@@ -148,9 +148,9 @@ def onStep():
     elif app.tweetBox.visible:
         lines = app.text.splitlines()
         lines_object = ["app.lines1", "app.lines2", "app.lines3"]
-        for line, count in enumerate(lines):
+        for count, line in enumerate(lines):
             try:
-                app.tweetText[count] = line
+                lines_object[count] = line
             except:
                 app.tweetText = ""
     else:
