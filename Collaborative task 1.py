@@ -148,6 +148,7 @@ def onStep():
         lines = app.text.splitlines()
         for line, count in enumerate(lines):
             try:
+                print(line)
                 app.tweetText[count] = line
             except:
                 app.tweetText = ""
@@ -163,7 +164,12 @@ def onKeyPress(key):
     elif key == "enter":
         app.text += "\n"
     elif key in list_of_valid_characters:
-        if (len(app.text) <= 8 and app.textBox.visible):
+        if app.textBox.visible:
+            if len(app.text) <= 8:
+                app.text += key
+        else:
             app.text += key
+
+            
 
 cmu_graphics.run()
