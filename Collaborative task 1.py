@@ -136,7 +136,8 @@ def onStep():
     #textBox
     if app.textBox.visible:
         if app.signIn.visible:
-            
+            app.textBox.value = app.text.splitlines()
+        
     else:
         app.stepsPerSecond = 0.1
         
