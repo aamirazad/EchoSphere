@@ -70,9 +70,6 @@ def manage_db(query):
     rows = connection.execute(query).fetchall()
     return rows
 
-# manage_db("INSERT INTO Tweets (username, content) VALUES")
-
-
 # manage tweet group
 def printTweets():    
     yVal = 120    
