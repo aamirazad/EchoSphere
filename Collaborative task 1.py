@@ -77,7 +77,6 @@ def printTweets():
     db = manage_db("SELECT * FROM Tweets")
     full_tweet = Group()  
     for tweet in db:   
-        print(tweet)
         icon = Image(tweet[2], 20,yVal-30)    
         icon.width=20  
         icon.height=20    
@@ -157,6 +156,5 @@ def onKeyPress(key):
     elif key in list_of_valid_characters:
         if (len(app.text) <= 8 and app.textBox.visible):
             app.text += key
-printTweets()
-
+            
 cmu_graphics.run()
