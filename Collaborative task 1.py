@@ -148,6 +148,8 @@ def onKeyPress(key):
     list_of_valid_characters = list(valid_characters)
     if key == "backspace":
         app.text = app.text[:-1]
+    elif key == "enter":
+        app.text += "\n"
     elif key in list_of_valid_characters:
         if (len(app.text) <= 8 and app.textBox.visible):
             app.text += key
