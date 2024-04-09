@@ -135,10 +135,8 @@ def onMousePress(mouseX,mouseY):
 def onStep():
     #textBox
     if app.textBox.visible:
-        app.textBox.value = app.text
-        app.textBox.left = 60
-    elif app.tweet_text.visible:
-        app.tweet_text.value = app.text
+        if app.signIn.visible:
+            
     else:
         app.stepsPerSecond = 0.1
         
