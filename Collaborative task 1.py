@@ -165,6 +165,7 @@ def onStep():
             for count, line in enumerate(lines):
                 if not line:
                     app.list_of_lines[count].value = line = ""
+                app.list_of_lines[count].fill = "black"
                 app.list_of_lines[count].value = line
     else:
         app.stepsPerSecond = 0.1
