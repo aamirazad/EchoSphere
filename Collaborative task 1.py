@@ -160,7 +160,7 @@ def onStep():
     elif app.tweetBox.visible:
         lines = app.text.splitlines()
         if not lines:
-            app.list_of_lines0.value
+            app.list_of_lines[0].value = ""
         for count, line in enumerate(lines):
             app.list_of_lines[count].value = line
         
