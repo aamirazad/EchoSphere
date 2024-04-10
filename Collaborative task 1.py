@@ -163,7 +163,6 @@ def onStep():
             app.list_of_lines[0].value = ""
         for count, line in enumerate(lines):
             app.list_of_lines[count].value = line
-        
     else:
         app.stepsPerSecond = 0.1
         
