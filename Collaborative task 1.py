@@ -163,8 +163,9 @@ def onStep():
             app.list_of_lines[0].value = ""
         else:
             for count, line in enumerate(lines):
+                print(line)
                 if not line:
-                    print(app.list_of_lines[count].value)
+                    
                     app.list_of_lines[count].value = ""
                 else:
                     app.list_of_lines[count].fill = "black"
