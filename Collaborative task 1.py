@@ -161,8 +161,11 @@ def onStep():
         lines = app.text.splitlines()
         if not lines:
             app.list_of_lines[0].value = ""
-        for count, line in enumerate(lines):
-            app.list_of_lines[count].value = line
+        else:
+            for count, line in enumerate(lines):
+                if not line:
+                    app.list_of_lines[count].value = line = ""
+                app.list_of_lines[count].value = line
     else:
         app.stepsPerSecond = 0.1
         
