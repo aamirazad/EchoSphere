@@ -117,7 +117,7 @@ def go_home_page():
     handlePage(app.tweetPage)
     app.header.visible=True
 
-def submit():
+def submitName():
     handlePage(app.tweetPage)
     app.name = app.textBox.value
 
@@ -133,7 +133,7 @@ def onMousePress(mouseX,mouseY):
         handlePage(app.header)
         handlePage(app.tweetPage)
     elif submitButton.hits(mouseX,mouseY) and submitButton.visible:
-        submit()
+        submitName()
 
 # handle changes
 def onStep():
