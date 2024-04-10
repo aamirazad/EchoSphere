@@ -125,6 +125,12 @@ def submitTweet():
     handlePage(app.tweetPage)
     print(app.text)
 
+def checkClick(objects, mouseX, mouseY):
+    run = False
+    for object in objects:
+        run = object.hits(mouseX,mouseY) and object.visible
+    return run
+
 # manage mouse clicks
 def onMousePress(mouseX,mouseY):
     if new_post.hits(mouseX,mouseY) and new_post.visible:
@@ -138,6 +144,8 @@ def onMousePress(mouseX,mouseY):
         handlePage(app.tweetPage)
     elif submitButton.hits(mouseX,mouseY) and submitButton.visible:
         submitName()
+    elif checkClick(Post, mouseX, mouseY):
+        submitTweet()
 
 # handle changes
 def onStep():
