@@ -163,7 +163,7 @@ def onStep():
             try:
                 app.list_of_lines[count].value = line
             except:
-                app.tweetText = ""
+                return
     else:
         app.stepsPerSecond = 0.1
         
