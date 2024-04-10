@@ -80,10 +80,10 @@ def printTweets():
     app.tweetPage.clear()
     db = manage_db("SELECT * FROM Tweets")
     full_tweet = Group()  
-    for tweet in db:   
-        icon = Image(tweet[2], 20,yVal-30)    
-        icon.width=20  
-        icon.height=20    
+    for tweet in db:
+        icon = Image(tweet[2], 20,yVal-30)
+        icon.width=20
+        icon.height=20
         username = Label(tweet[1], 80, yVal-30,font='montserrat',bold=True)
         message = Label(tweet[3],username.right,yVal-10,size=20)
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
