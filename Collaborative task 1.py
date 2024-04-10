@@ -121,6 +121,10 @@ def submitName():
     handlePage(app.tweetPage)
     app.name = app.textBox.value
 
+def submitTweet():
+    handlePage(app.tweetPage)
+    print(app.text)
+
 # manage mouse clicks
 def onMousePress(mouseX,mouseY):
     if new_post.hits(mouseX,mouseY) and new_post.visible:
