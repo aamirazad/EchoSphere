@@ -159,16 +159,14 @@ def onStep():
         app.textBox.left = 60
     elif app.tweetBox.visible:
         lines = app.text.splitlines()
-        if not lines:
-            app.list_of_lines[0].value = ""
-        else:
-            for count, line in enumerate(lines):
-                print(line)
-                if not line:
-                    app.list_of_lines[count].value = ""
-                else:
-                    app.list_of_lines[count].fill = "black"
-                    app.list_of_lines[count].value = line
+        
+        for count, line in enumerate(lines):
+            print(line)
+            if not line:
+                app.list_of_lines[count].value = ""
+            else:
+                app.list_of_lines[count].fill = "black"
+                app.list_of_lines[count].value = line
     else:
         app.stepsPerSecond = 0.1
         
