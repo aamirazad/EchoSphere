@@ -144,6 +144,7 @@ def onMousePress(mouseX,mouseY):
     elif submitButton.hits(mouseX,mouseY) and submitButton.visible:
         submitName()
     elif checkClick(Post, mouseX, mouseY):
+        handlePage(app.tweetBox)
         submitTweet()
 
 # handle changes
