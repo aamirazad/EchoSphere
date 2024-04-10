@@ -121,7 +121,7 @@ def submitName():
     app.name = app.textBox.value
 
 def submitTweet():
-    handlePage(app.tweetPage)
+    handlePage(app.tweetBox)
     print(app.text)
 
 def checkClick(objects, mouseX, mouseY):
@@ -144,7 +144,6 @@ def onMousePress(mouseX,mouseY):
     elif submitButton.hits(mouseX,mouseY) and submitButton.visible:
         submitName()
     elif checkClick(Post, mouseX, mouseY):
-        handlePage(app.tweetBox)
         submitTweet()
 
 # handle changes
