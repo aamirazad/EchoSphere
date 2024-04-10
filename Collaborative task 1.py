@@ -160,10 +160,7 @@ def onStep():
     elif app.tweetBox.visible:
         lines = app.text.splitlines()
         for count, line in enumerate(lines):
-            try:
-                app.list_of_lines[count].value = line
-            except:
-                return
+            app.list_of_lines[count].value = line
     else:
         app.stepsPerSecond = 0.1
         
