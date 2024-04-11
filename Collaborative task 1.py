@@ -179,7 +179,4 @@ def onKeyPress(key):
                 if line != "":
                     app.list_of_lines[count].fill = "black"
                     app.list_of_lines[count].value = line
-
-            
-
 cmu_graphics.run()
