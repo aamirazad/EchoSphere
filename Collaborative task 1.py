@@ -69,7 +69,7 @@ connection.execute('''
 connection.commit()
 connection.close()
 
-def manage_db(query):
+def query_db(query):
     connection = sqlite3.connect("database.db")
     rows = connection.execute(query).fetchall()
     return rows
@@ -78,7 +78,7 @@ def manage_db(query):
 def printTweets():    
     yVal = 120    
     app.tweetPage.clear()
-    db = manage_db("SELECT * FROM Tweets")
+    db = query_db("SELECT * FROM Tweets")
     full_tweet = Group()  
     for tweet in db:
         icon = Image(tweet[2], 20,yVal-30)
