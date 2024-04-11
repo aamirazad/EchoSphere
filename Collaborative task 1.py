@@ -171,6 +171,7 @@ def onKeyPress(key):
             app.textBox.value = ""
         app.textBox.left = 60
     if app.tweetBox.visible:
+        app.textBox.value = ""
         lines = app.text.splitlines()
         if lines:
             for count, line in enumerate(lines):
