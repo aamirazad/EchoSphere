@@ -145,29 +145,6 @@ def onMousePress(mouseX,mouseY):
         submitName()
     elif checkClick(Post, mouseX, mouseY):
         submitTweet()
-
-# handle changes
-def onStep():
-    #textBox
-    if app.signIn.visible:
-        line = app.text.splitlines()
-        try:
-            app.textBox.value = line[0]
-            app.text = line[0]
-        except:
-            app.textBox.value = ""
-        app.textBox.left = 60
-    elif app.tweetBox.visible:
-        lines = app.text.splitlines()
-        if not lines:
-            app.list_of_lines[0].value = ""
-        else:
-            for count, line in enumerate(lines):
-                if line != "":
-                    app.list_of_lines[count].fill = "black"
-                    app.list_of_lines[count].value = line
-    else:
-        app.stepsPerSecond = 0.1
         
 # handle keypress
 def onKeyPress(key):
@@ -184,6 +161,24 @@ def onKeyPress(key):
                 app.text += key
         else:
             app.text += key
+        #textBox
+    if app.signIn.visible:
+        line = app.text.splitlines()
+        try:
+            app.textBox.value = line[0]
+            app.text = line[0]
+        except:
+            app.textBox.value = ""
+        app.textBox.left = 60
+    if app.tweetBox.visible:
+        lines = app.text.splitlines()
+        if not lines:
+            app.list_of_lines[0].value = ""
+        else:
+            for count, line in enumerate(lines):
+                if line != "":
+                    app.list_of_lines[count].fill = "black"
+                    app.list_of_lines[count].value = line
 
             
 
