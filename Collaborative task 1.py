@@ -172,11 +172,9 @@ def onKeyPress(key):
         app.textBox.left = 60
     if app.tweetBox.visible:
         lines = app.text.splitlines()
-        if not lines:
-            app.list_of_lines[0].value = ""
-        else:
+        if lines:
             for count, line in enumerate(lines):
-                if line != "":
+                if line:
                     app.list_of_lines[count].fill = "black"
                     app.list_of_lines[count].value = line
 
