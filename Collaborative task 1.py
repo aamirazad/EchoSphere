@@ -121,6 +121,8 @@ def submitName():
     app.name = app.textBox.value
 
 def submitTweet():
+    if app.name and app.text:
+        manage_db("INSERT INTO Tweets (username, content, date_created) VALUES")
     handlePage(app.tweetBox)
     print(app.text)
 
