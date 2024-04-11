@@ -91,7 +91,7 @@ def printTweets():
         full_tweet.add(icon,username,message, barline)
     app.tweetPage.add(full_tweet)    
 printTweets()
-
+    
 
 # ui manager
 def handlePage(page):
