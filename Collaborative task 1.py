@@ -43,7 +43,7 @@ tweet_seperator = Line(0,300,400,300,lineWidth=.25)
 app.tweetBox.add(Backarrow,drafts,Post, app.tweet_text, tweet_circle, tweet_seperator)
 app.tweetBox.visible = False
 app.arrows=Group(Polygon(360,90,370,110,350,110),Polygon(350,270,370,270,360,290))
-app.tweet
+app.tweetPage.add()
 # Sign in
 welcome = Label("Welcome to X",140,120, size=30)
 nameBox = Rect(50,150,300,50, fill=None, border="black")
