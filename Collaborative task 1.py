@@ -69,21 +69,23 @@ connection.execute('''
 connection.commit()
 connection.close()
 
-def manage_db(query):
+def query_db(query):
     connection = sqlite3.connect("database.db")
     rows = connection.execute(query).fetchall()
     return rows
+    connection.close()
 
 # manage tweet group
 def printTweets():    
     yVal = 120    
     app.tweetPage.clear()
-    db = manage_db("SELECT * FROM Tweets")
+    db = query_db("SELECT * FROM Tweets")
     full_tweet = Group()  
     for tweet in db:
-        icon = Image(tweet[2], 20,yVal-30)
-        icon.width=20
-        icon.height=20
+        if tweet[2]:
+            icon = Image(tweet[2], 20,yVal-30)
+            icon.width=20
+            icon.height=20
         username = Label(tweet[1], 80, yVal-30,font='montserrat',bold=True)
         message = Label(tweet[3],username.right,yVal-10,size=20)
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
@@ -122,8 +124,13 @@ def submitName():
     app.name = app.textBox.value
 
 def submitTweet():
+    if app.name and app.text:
+        connection = sqlite3.connect("database.db")
+        connection.execute("INSERT INTO Tweets (username, content, date_created) VALUES (?, ?, ?)", (app.name, app.text, datetime.now()))
+        connection.commit()
+        connection.close()
+        print("added")
     handlePage(app.tweetBox)
-    print(app.text)
 
 def checkClick(objects, mouseX, mouseY):
     run = False
@@ -172,12 +179,12 @@ def onKeyPress(key):
             app.textBox.value = ""
         app.textBox.left = 60
     if app.tweetBox.visible:
+        for line in app.list_of_lines:
+            line.value = ""
         lines = app.text.splitlines()
-        if not lines:
-            app.list_of_lines[0].value = ""
-        else:
+        if lines:
             for count, line in enumerate(lines):
-                if line != "":
+                if line:
                     app.list_of_lines[count].fill = "black"
                     app.list_of_lines[count].value = line
 cmu_graphics.run()
