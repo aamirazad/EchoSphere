@@ -124,7 +124,7 @@ def submitName():
 def submitTweet():
     if app.name and app.text:
         connection = sqlite3.connect("database.db")
-        connection.execute("INSERT INTO Tweets (username, content, date_created) VALUES (?, ?, ?)", ())
+        connection.execute("INSERT INTO Tweets (username, content, date_created) VALUES (?, ?, ?)", (app.name, ))
     handlePage(app.tweetBox)
     print(app.text)
 
