@@ -92,6 +92,7 @@ def printTweets():
     app.tweetPage.add(full_tweet)    
 printTweets()
 
+
 # ui manager
 def handlePage(page):
     app.tweetPage.visible = False
