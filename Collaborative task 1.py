@@ -20,7 +20,7 @@ Logo.height = 45
 
 ## pages
 app.header = Group(signInButton,seperator,ForYou,Following,Logo)
-app.text = ["", "", ""]
+app.text = ""
 app.name = ""
 app.user_welcome = Label("", 110,20)
 app.tweetPage = Group()
