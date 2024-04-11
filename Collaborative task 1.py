@@ -73,6 +73,7 @@ def query_db(query):
     connection = sqlite3.connect("database.db")
     rows = connection.execute(query).fetchall()
     return rows
+    connection.close()
 
 # manage tweet group
 def printTweets():    
