@@ -76,25 +76,30 @@ def query_db(query):
     connection.close()
 
 # manage tweet group
-def printTweets():    
-    yVal = 120    
+def printTweets(line = 1):    
+    yVal = 80    
     app.tweetPage.clear()
     db = query_db("SELECT * FROM Tweets")
     full_tweet = Group()  
     for tweet in db:
         if tweet[2]:
-            icon = Image(tweet[2], 20,yVal-30)
+            icon = Image(tweet[2], 20,yVal+10)
             icon.width=20
             icon.height=20
-        username = Label(tweet[1], 80, yVal-30,font='montserrat',bold=True)
+        username = Label(tweet[1], 80, yVal+10,font='montserrat',bold=True)
         message = Group()
         for count, line in enumerate(tweet[3].splitlines()):
-            lineYVall = (count * 30) + (yVal-15)
-            message.add(Label(line,username.right,lineYVall,size=20))
+            lineYVal = (count * 30) + (yVal+35)
+            message.add(Label(line,username.right,lineYVal,size=20))
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         #yVal += 67.5
-        yVal += message.bottom
+        yVal = barline.bottom
+        print(barline.bottom)
         full_tweet.add(icon,username,message, barline)
+    if line == 1:
+        for tweet in full_tweet:
+            if tweet.bottom < 400:
+                tweet.visible = False
     app.tweetPage.add(full_tweet, app.arrows)
 printTweets()
 
@@ -121,10 +126,11 @@ def sign_in_page():
 
 def go_home_page():
     handlePage(app.tweetPage)
+    printTweets()
     app.header.visible=True
 
 def submitName():
-    handlePage(app.tweetPage)
+    go_home_page()
     app.name = app.textBox.value
 
 def submitTweet():
@@ -134,7 +140,7 @@ def submitTweet():
         connection.commit()
         connection.close()
         print("added")
-    handlePage(app.tweetBox)
+    go_home_page()
 
 def checkClick(objects, mouseX, mouseY):
     run = False
