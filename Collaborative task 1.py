@@ -89,8 +89,8 @@ def printTweets():
         username = Label(tweet[1], 80, yVal-30,font='montserrat',bold=True)
         message = Group()
         for count, line in enumerate(tweet[3].splitlines()):
-            lineYVall = (count * 5) + (yVal-15)
-            message.add(Label(line,username.right,yVal-10,size=20))
+            lineYVall = (count * 30) + (yVal-15)
+            message.add(Label(line,username.right,lineYVall,size=20))
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         yVal += 67.5
         full_tweet.add(icon,username,message, barline)
