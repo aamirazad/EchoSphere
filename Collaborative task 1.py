@@ -98,8 +98,7 @@ def printTweets(line = 1):
         full_tweet.add(icon,username,message, barline)
     if line == 1:
         for tweet in full_tweet:
-            if tweet.bottom < 400:
-                tweet.visible = False
+            print(tweet.bottom)
     app.tweetPage.add(full_tweet, app.arrows)
 printTweets()
 
@@ -140,7 +139,6 @@ def submitTweet():
         connection.execute("INSERT INTO Tweets (username, content, date_created) VALUES (?, ?, ?)", (app.name, app.text, datetime.now()))
         connection.commit()
         connection.close()
-        print("added")
     go_home_page()
 
 def checkClick(objects, mouseX, mouseY):
