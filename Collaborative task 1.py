@@ -92,7 +92,8 @@ def printTweets():
             lineYVall = (count * 30) + (yVal-15)
             message.add(Label(line,username.right,lineYVall,size=20))
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
-        yVal += 67.5
+        #yVal += 67.5
+        yVal += message.bottom
         full_tweet.add(icon,username,message, barline)
     app.tweetPage.add(full_tweet, app.arrows)
 printTweets()
