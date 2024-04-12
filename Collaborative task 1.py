@@ -46,7 +46,7 @@ app.arrows=Group(Polygon(360,90,370,110,350,110),Polygon(350,270,370,270,360,290
 # Sign in
 welcome = Label("Welcome to X",140,120, size=30)
 nameBox = Rect(50,150,300,50, fill=None, border="black")
-app.textBox= Label("Enter your name here", 100,170,size=30, font="grenze")
+app.textBox= Label("", 100,170,size=30, font="grenze")
 submitButton=Group( Rect(250,325,100,20),Label('Sign In',300,335,fill='white',bold=True))
 Picture= Image('Aamir Azad.png',50,225)
 SigninCircle=Circle(Picture.centerX-2.5,Picture.centerY,30,fill='darkgray',opacity=45)
@@ -72,8 +72,8 @@ connection.close()
 def query_db(query):
     connection = sqlite3.connect("database.db")
     rows = connection.execute(query).fetchall()
-    return rows
     connection.close()
+    return rows
 
 # manage tweet group
 def printTweets(line = 1):    
@@ -91,10 +91,10 @@ def printTweets(line = 1):
         for count, line in enumerate(tweet[3].splitlines()):
             lineYVal = (count * 30) + (yVal+35)
             message.add(Label(line,username.right,lineYVal,size=20))
+            message.left = 70
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         #yVal += 67.5
         yVal = barline.bottom
-        print(barline.bottom)
         full_tweet.add(icon,username,message, barline)
     if line == 1:
         for tweet in full_tweet:
@@ -115,6 +115,7 @@ def handlePage(page):
 
 def new_tweet():
     handlePage(app.tweetBox)
+    app.text = ""
     app.stepsPerSecond = 30
     app.header.visible=False
 
@@ -166,7 +167,7 @@ def onMousePress(mouseX,mouseY):
         
 # handle keypress
 def onKeyPress(key):
-    valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789'    
+    valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789 '    
     list_of_valid_characters = list(valid_characters)
     if key == "backspace":
         app.text = app.text[:-1]
@@ -189,12 +190,17 @@ def onKeyPress(key):
             app.textBox.value = ""
         app.textBox.left = 60
     if app.tweetBox.visible:
+        if key == "space":
+            app.text += " "
         for line in app.list_of_lines:
             line.value = ""
         lines = app.text.splitlines()
         if lines:
             for count, line in enumerate(lines):
                 if line:
+                    if len(line) >= 20:
+                        app.text = app.text[:-1]
                     app.list_of_lines[count].fill = "black"
                     app.list_of_lines[count].value = line
+                    app.list_of_lines[count].left = 65
 cmu_graphics.run()
