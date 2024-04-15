@@ -165,7 +165,7 @@ def onMousePress(mouseX,mouseY):
     elif checkClick(Post, mouseX, mouseY):
         submitTweet()
     elif SigninCircle.hits(mouseX,mouseY) and SigninCircle.visible:
-        SubmitUrl
+        SubmitUrl.visible=True
         
 # handle keypress
 def onKeyPress(key):
