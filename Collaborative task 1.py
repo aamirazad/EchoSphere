@@ -46,7 +46,7 @@ app.arrows=Group(Polygon(360,90,370,110,350,110),Polygon(350,270,370,270,360,290
 # Sign in
 welcome = Label("Welcome to X",140,120, size=30)
 nameBox = Rect(50,150,300,50, fill=None, border="black")
-app.textBox= Label("Enter your name here", 100,170,size=30, font="grenze")
+app.textBox= Label("", 100,170,size=30, font="grenze")
 submitButton=Group( Rect(250,325,100,20),Label('Sign In',300,335,fill='white',bold=True))
 Picture= Image('Aamir Azad.png',50,225)
 SigninCircle=Circle(Picture.centerX-2.5,Picture.centerY,30,fill='darkgray',opacity=45)
@@ -72,25 +72,33 @@ connection.close()
 def query_db(query):
     connection = sqlite3.connect("database.db")
     rows = connection.execute(query).fetchall()
-    return rows
     connection.close()
+    return rows
 
 # manage tweet group
-def printTweets():    
-    yVal = 120    
+def printTweets(line = 1):    
+    yVal = 80    
     app.tweetPage.clear()
     db = query_db("SELECT * FROM Tweets")
     full_tweet = Group()  
     for tweet in db:
         if tweet[2]:
-            icon = Image(tweet[2], 20,yVal-30)
+            icon = Image(tweet[2], 20,yVal+10)
             icon.width=20
             icon.height=20
-        username = Label(tweet[1], 80, yVal-30,font='montserrat',bold=True)
-        message = Label(tweet[3],username.right,yVal-10,size=20)
+        username = Label(tweet[1], 80, yVal+10,font='montserrat',bold=True)
+        message = Group()
+        for count, line in enumerate(tweet[3].splitlines()):
+            lineYVal = (count * 30) + (yVal+35)
+            message.add(Label(line,username.right,lineYVal,size=20))
+            message.left = 70
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
-        yVal += 67.5
+        #yVal += 67.5
+        yVal = barline.bottom
         full_tweet.add(icon,username,message, barline)
+    if line == 1:
+        for tweet in full_tweet:
+            print(tweet.bottom)
     app.tweetPage.add(full_tweet, app.arrows)
 printTweets()
 
@@ -106,6 +114,7 @@ def handlePage(page):
 
 def new_tweet():
     handlePage(app.tweetBox)
+    app.text = ""
     app.stepsPerSecond = 30
     app.header.visible=False
 
@@ -117,10 +126,11 @@ def sign_in_page():
 
 def go_home_page():
     handlePage(app.tweetPage)
+    printTweets()
     app.header.visible=True
 
 def submitName():
-    handlePage(app.tweetPage)
+    go_home_page()
     app.name = app.textBox.value
 
 def submitTweet():
@@ -129,8 +139,7 @@ def submitTweet():
         connection.execute("INSERT INTO Tweets (username, content, date_created) VALUES (?, ?, ?)", (app.name, app.text, datetime.now()))
         connection.commit()
         connection.close()
-        print("added")
-    handlePage(app.tweetBox)
+    go_home_page()
 
 def checkClick(objects, mouseX, mouseY):
     run = False
@@ -156,7 +165,7 @@ def onMousePress(mouseX,mouseY):
         
 # handle keypress
 def onKeyPress(key):
-    valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789'    
+    valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789 '    
     list_of_valid_characters = list(valid_characters)
     if key == "backspace":
         app.text = app.text[:-1]
@@ -179,12 +188,17 @@ def onKeyPress(key):
             app.textBox.value = ""
         app.textBox.left = 60
     if app.tweetBox.visible:
+        if key == "space":
+            app.text += " "
         for line in app.list_of_lines:
             line.value = ""
         lines = app.text.splitlines()
         if lines:
             for count, line in enumerate(lines):
                 if line:
+                    if len(line) >= 20:
+                        app.text = app.text[:-1]
                     app.list_of_lines[count].fill = "black"
                     app.list_of_lines[count].value = line
+                    app.list_of_lines[count].left = 65
 cmu_graphics.run()
