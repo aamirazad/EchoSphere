@@ -76,7 +76,7 @@ def query_db(query):
     return rows
 
 # manage tweet group
-def printTweets(line = 1):    
+def printTweets(page = 1):    
     yVal = 80    
     app.tweetPage.clear()
     db = query_db("SELECT * FROM Tweets")
@@ -96,11 +96,14 @@ def printTweets(line = 1):
         #yVal += 67.5
         yVal = barline.bottom
         full_tweet.add(icon,username,message, barline)
-    if line == 1:
-        for tweet in full_tweet:
-            print(tweet.bottom)
+    for singleTweet in full_tweet:
+        print("top" + str(singleTweet.top))
+        print("bottom" + str(singleTweet.bottom))
+        if singleTweet.bottom > (page * 400) or singleTweet.top < ((page - 1) * 400 + 80):
+            singleTweet.visible = False
+
     app.tweetPage.add(full_tweet, app.arrows)
-printTweets()
+printTweets(2)
 
 
 # ui manager
