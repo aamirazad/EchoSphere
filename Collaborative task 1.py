@@ -49,8 +49,7 @@ nameBox = Rect(50,150,300,50, fill=None, border="black")
 app.textBox= Label("", 100,170,size=30, font="grenze")
 submitButton=Group( Rect(250,325,100,20),Label('Sign In',300,335,fill='white',bold=True))
 Picture= Image('Aamir Azad.png',50,225)
-SigninCircle=Circle(Picture.centerX-2.5,Picture.centerY,30,fill='darkgray',opacity=45)
-SigninCircle.toBack()
+
 Instruction=Label('Insert Picture',Picture.centerX+95,Picture.centerY, bold=True, size=15, font='monospace' )
 app.signIn.add(welcome,nameBox, app.textBox,submitButton,Picture,SigninCircle,Instruction)
 app.signIn.visible = False
