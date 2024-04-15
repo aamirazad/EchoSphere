@@ -51,7 +51,7 @@ submitButton=Group( Rect(250,325,100,20),Label('Sign In',300,335,fill='white',bo
 Picture= Image('Aamir Azad.png',50,225)
 SigninCircle=Circle(Picture.centerX-2.5,Picture.centerY,30,fill='darkgray',opacity=45)
 SigninCircle.toBack()
-URLabel
+URLabel=Label("Insert URL",85,310,size=15,font='monospace')
 SubmitUrl=Rect(35,300,200,25,fill=None,border='Black')
 SubmitUrl.visible=False
 Instruction=Label('Insert Picture',Picture.centerX+95,Picture.centerY, bold=True, size=15, font='monospace' )
