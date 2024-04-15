@@ -126,7 +126,7 @@ def sign_in_page():
     app.stepsPerSecond = 30
     app.text = ""
     new_post.visible = False
-    SubmitUrl=False
+    SubmitUrl.visible=False
 
 def go_home_page():
     handlePage(app.tweetPage)
