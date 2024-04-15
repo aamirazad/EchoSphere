@@ -55,7 +55,7 @@ urlLabel=Label("Insert URL",85,310,size=15,font='monospace')
 SubmitUrl=Group(Rect(35,300,200,25,fill=None,border='Black'),urlLabel)
 SubmitUrl.visible=False
 Instruction=Label('Insert Picture',Picture.centerX+95,Picture.centerY, bold=True, size=15, font='monospace' )
-app.signIn.add(welcome,nameBox, app.textBox,submitButton,Picture,SigninCircle,Instruction)
+app.signIn.add(welcome,nameBox, app.textBox,submitButton,Picture,SigninCircle,Instruction,SubmitUrl)
 app.signIn.visible = False
 #Vecteezy :denyzdrozd
 
