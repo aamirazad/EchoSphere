@@ -171,7 +171,7 @@ def onMousePress(mouseX,mouseY):
         
 # handle keypress
 def onKeyPress(key):
-    valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789 '    
+    valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789. '    
     list_of_valid_characters = list(valid_characters)
     if key == "backspace":
         app.text = app.text[:-1]
