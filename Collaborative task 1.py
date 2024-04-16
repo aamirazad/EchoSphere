@@ -185,7 +185,10 @@ def onKeyPress(key):
         else:
             app.text += key
         #textBox
-    if app.signIn.visible:
+    if urlLabel.visible:
+        urlLabel.value=app.text
+
+    elif app.signIn.visible:
         line = app.text.splitlines()
         try:
             app.textBox.value = line[0]
@@ -207,4 +210,6 @@ def onKeyPress(key):
                     app.list_of_lines[count].fill = "black"
                     app.list_of_lines[count].value = line
                     app.list_of_lines[count].left = 65
+    
+        
 cmu_graphics.run()
