@@ -22,6 +22,7 @@ Logo.height = 45
 app.header = Group(signInButton,seperator,ForYou,Following,Logo)
 app.text = ""
 app.name = ""
+app.icon=''
 app.user_welcome = Label("", 110,20)
 app.tweetPage = Group()
 app.tweetBox = Group()
@@ -135,6 +136,7 @@ def go_home_page():
 
 def submitName():
     go_home_page()
+    app.icon=urlLabel.value
     app.name = app.textBox.value
 
 def submitTweet():
@@ -167,7 +169,7 @@ def onMousePress(mouseX,mouseY):
     elif checkClick(Post, mouseX, mouseY):
         submitTweet()
     elif SigninCircle.hits(mouseX,mouseY) and SigninCircle.visible:
-        SubmitUrl.visible=True
+        SubmitUrl.visible= not SubmitUrl.visible
         
 # handle keypress
 def onKeyPress(key):
@@ -210,6 +212,4 @@ def onKeyPress(key):
                     app.list_of_lines[count].fill = "black"
                     app.list_of_lines[count].value = line
                     app.list_of_lines[count].left = 65
-    
-        
 cmu_graphics.run()
