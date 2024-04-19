@@ -1,7 +1,7 @@
-from cmu_graphics import *
 import datetime as datetime
 import sqlite3
 from datetime import datetime
+from cmu_graphics import *
 
 # UI
 #new by Adrien Coquet from Noun Project (CC BY 3.0)
@@ -20,7 +20,7 @@ Logo.height = 45
 
 ## pages
 app.header = Group(signInButton,seperator,ForYou,Following,Logo)
-app.text = ""
+app.text = ["", "", ""]
 app.name = ""
 app.icon=''
 app.user_welcome = Label("", 110,20)
@@ -33,7 +33,7 @@ app.signIn = Group()
 Backarrow=Group(Polygon(12,25,25,15,25,35),Line(25,25,45,25))
 drafts= Label('Drafts',260,30,size=15,bold=True)
 Post=Group(Oval(330,30,50,20),Label('Post',330,30,size=15, bold=True,fill='white'))
-#app.textBox
+#app.signInBox
 tweet_circle = Circle(35,95,20)
 app.line1 = Label('What is Happening?!',165,95, size=20,fill='darkgray')
 app.line2 = Label('',165,120,size=20)
@@ -47,7 +47,7 @@ app.arrows=Group(Polygon(360,90,370,110,350,110),Polygon(350,270,370,270,360,290
 # Sign in
 welcome = Label("Welcome to X",140,120, size=30)
 nameBox = Rect(50,150,300,50, fill=None, border="black")
-app.textBox= Label("", 100,170,size=30, font="grenze")
+app.signInBox= Label("Enter username", 200,170,size=30, font="grenze", fill="darkGray")
 submitButton=Group( Rect(250,325,100,20),Label('Sign In',300,335,fill='white',bold=True))
 Picture= Image('Aamir Azad.png',50,225)
 SigninCircle=Circle(Picture.centerX-2.5,Picture.centerY,30,fill='darkgray',opacity=45)
@@ -56,7 +56,7 @@ urlLabel=Label("Insert URL",85,310,size=15,font='monospace')
 SubmitUrl=Group(Rect(35,300,200,25,fill=None,border='Black'),urlLabel)
 SubmitUrl.visible=False
 Instruction=Label('Insert Picture',Picture.centerX+95,Picture.centerY, bold=True, size=15, font='monospace' )
-app.signIn.add(welcome,nameBox, app.textBox,submitButton,Picture,SigninCircle,Instruction,SubmitUrl)
+app.signIn.add(welcome,nameBox, app.signInBox,submitButton,Picture,SigninCircle,Instruction,SubmitUrl)
 app.signIn.visible = False
 #Vecteezy :denyzdrozd
 
@@ -119,6 +119,9 @@ def handlePage(page):
 def new_tweet():
     handlePage(app.tweetBox)
     app.text = ""
+    for line in app.list_of_lines:
+        line.value = ""
+    app.list_of_lines[0].value = "What is Happening?!"
     app.stepsPerSecond = 30
     app.header.visible=False
 
@@ -137,12 +140,12 @@ def go_home_page():
 def submitName():
     go_home_page()
     app.icon=urlLabel.value
-    app.name = app.textBox.value
+    app.name = app.signInBox.value
 
 def submitTweet():
     if app.name and app.text:
         connection = sqlite3.connect("database.db")
-        connection.execute("INSERT INTO Tweets (username, content, date_created) VALUES (?, ?, ?)", (app.name, app.text, datetime.now()))
+        connection.execute("INSERT INTO Tweets (username, icon, content, date_created) VALUES (?, ?, ?)", (app.name, app.icon, app.text, datetime.now()))
         connection.commit()
         connection.close()
     go_home_page()
@@ -170,46 +173,50 @@ def onMousePress(mouseX,mouseY):
         submitTweet()
     elif SigninCircle.hits(mouseX,mouseY) and SigninCircle.visible:
         SubmitUrl.visible= not SubmitUrl.visible
-        
+
 # handle keypress
 def onKeyPress(key):
-    valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789. '    
-    list_of_valid_characters = list(valid_characters)
-    if key == "backspace":
-        app.text = app.text[:-1]
-    elif key == "enter":
-        if app.text.count("\n") < 2:
-            app.text += "\n"
-    elif key in list_of_valid_characters:
-        if app.textBox.visible:
-            if len(app.text) <= 8:
-                app.text += key
+    #elif key == "enter":
+    #    if app.text.count("\n") < 2:
+    #        app.text += "\n"
+    if app.signIn.visible:
+        if SubmitUrl.visible:
+            if urlLabel.value == "Insert URL":
+                urlLabel.value = ""
+            if key == "backspace":
+                urlLabel.value = urlLabel.value[:-1]
+            else:
+                urlLabel.value += key
+            urlLabel.left = 40
         else:
-            app.text += key
-        #textBox
-    if urlLabel.visible:
-        urlLabel.value=app.text
-
-    elif app.signIn.visible:
-        line = app.text.splitlines()
-        try:
-            app.textBox.value = line[0]
-            app.text = line[0]
-        except:
-            app.textBox.value = ""
-        app.textBox.left = 60
-    if app.tweetBox.visible:
+            if key == "backspace":
+                app.text = app.text[:-1]
+            valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789'
+            list_of_valid_characters = list(valid_characters)
+            if key in list_of_valid_characters and len(app.text) <= 8:
+                app.text += key
+            lines = app.text.splitlines()
+            if lines:
+                app.signInBox.fill = "black"
+                app.signInBox.value = lines[0]
+                app.signInBox.left = 60
+            else:
+                app.signInBox.value = ""
+            # for line in lines:
+            #     if line.count("\n") < 2 and len(line) < 20:
+            #         app.text += key
+            # app.text += key
+    elif app.tweetBox.visible:
         if key == "space":
             app.text += " "
-        for line in app.list_of_lines:
-            line.value = ""
         lines = app.text.splitlines()
-        if lines:
-            for count, line in enumerate(lines):
-                if line:
-                    if len(line) >= 20:
-                        app.text = app.text[:-1]
-                    app.list_of_lines[count].fill = "black"
-                    app.list_of_lines[count].value = line
-                    app.list_of_lines[count].left = 65
+        for line in lines:
+            if len(line) >= 20:
+                if app.text.count("\n") < 2:
+                    app.text += "\n"
+        lines = app.text.splitlines()
+        for count, line in enumerate(lines):
+                app.list_of_lines[count].fill = "black"
+                app.list_of_lines[count].value += key
+                app.list_of_lines[count].left = 65
 cmu_graphics.run()
