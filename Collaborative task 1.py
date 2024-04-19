@@ -2,6 +2,7 @@ import datetime as datetime
 import sqlite3
 from datetime import datetime
 from cmu_graphics import *
+import requests
 
 # UI
 #new by Adrien Coquet from Noun Project (CC BY 3.0)
