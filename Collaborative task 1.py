@@ -86,10 +86,9 @@ def printTweets(line = 1):
     db = query_db("SELECT * FROM Tweets")
     full_tweet = Group()  
     for tweet in db:
-        if tweet[2]:
-            icon = Image(tweet[2], 20,yVal+10)
-            icon.width=20
-            icon.height=20
+        icon = Image("https://altar.berrysauce.me/generate?data=example", 20,yVal+10)
+        icon.width=20
+        icon.height=20
         username = Label(tweet[1], 80, yVal+10,font='montserrat',bold=True)
         message = Group()
         for count, line in enumerate(tweet[3].splitlines()):
