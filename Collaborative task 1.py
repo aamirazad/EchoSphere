@@ -1,6 +1,7 @@
-import datetime as datetime
 import sqlite3
 from datetime import datetime
+import random
+from identicons import generate, save
 from cmu_graphics import *
 
 # UI
@@ -84,9 +85,12 @@ def printTweets(line = 1):
     yVal = 80    
     app.tweetPage.clear()
     db = query_db("SELECT * FROM Tweets")
-    full_tweet = Group()  
+    full_tweet = Group()
     for tweet in db:
-        icon = Image("https://altar.berrysauce.me/generate?data=example", 20,yVal+10)
+        random.randint(0, 0xFFFFFF)
+        identicon = generate(tweet[1])
+        save(identicon, tweet[1] + "_icon.png", 500, 500)
+        icon = Image(tweet[1] + "_icon.png", 20,yVal+10)
         icon.width=20
         icon.height=20
         username = Label(tweet[1], 80, yVal+10,font='montserrat',bold=True)
