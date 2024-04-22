@@ -80,6 +80,9 @@ def query_db(query):
     connection.close()
     return rows
 
+r = lambda: randint(0,255)
+print('#%02X%02X%02X' % (r(),r(),r()))
+
 # manage tweet group
 def printTweets(line = 1):    
     yVal = 80    
@@ -87,8 +90,6 @@ def printTweets(line = 1):
     db = query_db("SELECT * FROM Tweets")
     full_tweet = Group()
     for tweet in db:
-        color = "%06x" % randint(0, 0xFFFFFF)
-        print(color)
         identicon = generate(tweet[1])
         save(identicon, tweet[1] + "_icon.png", 500, 500)
         icon = Image(tweet[1] + "_icon.png", 20,yVal+10)
