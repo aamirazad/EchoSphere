@@ -90,7 +90,7 @@ def printTweets(line = 1):
     db = query_db("SELECT * FROM Tweets")
     full_tweet = Group()
     for tweet in db:
-        identicon = generate(tweet[1], primary=0xC85605, secondary=0x8B0000)
+        identicon = generate(tweet[1], primary=0xFFD700, secondary=0x8B0000)
         save(identicon, tweet[1] + "_icon.png", 500, 500)
         icon = Image(tweet[1] + "_icon.png", 20,yVal+10)
         icon.width=20
