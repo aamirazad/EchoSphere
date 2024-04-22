@@ -108,7 +108,7 @@ def printTweets(line = 1):
         full_tweet.add(icon,username,message, barline)
     if line == 1:
         for tweet in full_tweet:
-            print(tweet.bottom)
+            tweet.centerX -= 200
     app.tweetPage.add(full_tweet, app.arrows)
 printTweets()
 
