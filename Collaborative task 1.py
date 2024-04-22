@@ -88,6 +88,7 @@ def printTweets(line = 1):
     db = query_db("SELECT * FROM Tweets")
     full_tweet = Group()
     for tweet in db:
+        random.seed(tweet[1])
         color = randint(0,255) + randint(0,255) + randint(0,255)
         identicon = generate(tweet[1], primary=color, secondary=0xffffff)
         save(identicon, tweet[1] + "_icon.png", 500, 500)
