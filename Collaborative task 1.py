@@ -1,6 +1,6 @@
 import sqlite3
 from datetime import datetime
-import random
+from random import randint
 from identicons import generate, save
 from cmu_graphics import *
 
@@ -87,7 +87,7 @@ def printTweets(line = 1):
     db = query_db("SELECT * FROM Tweets")
     full_tweet = Group()
     for tweet in db:
-        random.randint(0, 0xFFFFFF)
+        randint(0, 0xFFFFFF)
         identicon = generate(tweet[1])
         save(identicon, tweet[1] + "_icon.png", 500, 500)
         icon = Image(tweet[1] + "_icon.png", 20,yVal+10)
