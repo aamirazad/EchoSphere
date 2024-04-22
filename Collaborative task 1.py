@@ -88,8 +88,7 @@ def printTweets(line = 1):
     db = query_db("SELECT * FROM Tweets")
     full_tweet = Group()
     for tweet in db:
-        r = lambda: randint(0,255)
-        color = ('%02X%02X%02X' % (r(),r(),r()))
+        color = randint(0,255) + randint(0,255) + randint(0,255)
         identicon = generate(tweet[1], primary=hex(color), secondary=0xffffff)
         save(identicon, tweet[1] + "_icon.png", 500, 500)
         icon = Image(tweet[1] + "_icon.png", 20,yVal+10)
