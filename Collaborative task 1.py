@@ -89,7 +89,7 @@ def printTweets(line = 1):
     full_tweet = Group()
     for tweet in db:
         color = randint(0,255) + randint(0,255) + randint(0,255)
-        identicon = generate(tweet[1], primary=hex(color), secondary=0xffffff)
+        identicon = generate(tweet[1], primary=color, secondary=0xffffff)
         save(identicon, tweet[1] + "_icon.png", 500, 500)
         icon = Image(tweet[1] + "_icon.png", 20,yVal+10)
         icon.width=20
