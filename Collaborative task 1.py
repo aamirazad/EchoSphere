@@ -90,7 +90,7 @@ def printTweets(line = 1):
     for tweet in db:
         r = lambda: randint(0,255)
         color = ('%02X%02X%02X' % (r(),r(),r()))
-        identicon = generate(tweet[1], primary=int(color), secondary=0xffffff)
+        identicon = generate(tweet[1], primary=hex(color), secondary=0xffffff)
         save(identicon, tweet[1] + "_icon.png", 500, 500)
         icon = Image(tweet[1] + "_icon.png", 20,yVal+10)
         icon.width=20
