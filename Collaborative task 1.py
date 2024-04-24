@@ -154,10 +154,9 @@ def submitTweet():
         connection.close()
     go_home_page()
 
-def checkClick(objects, mouseX, mouseY):
+def checkClick(object, mouseX, mouseY):
     run = False
-    for object in objects:
-        run = object.hits(mouseX,mouseY) and object.visible
+    object.hits(mouseX,mouseY) and object.visible
     return run
 
 # manage mouse clicks
