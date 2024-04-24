@@ -33,7 +33,7 @@ app.signIn = Group()
 #backarrow
 Backarrow=Group(Polygon(12,25,25,15,25,35),Line(25,25,45,25))
 drafts= Label('Drafts',260,30,size=15,bold=True)
-PostIcon=Image(app.icon)
+PostIcon=Image(app.name)
 Post=Group(Oval(330,30,50,20),Label('Post',330,30,size=15, bold=True,fill='white'))
 #app.signInBox
 tweet_circle = Circle(35,95,20)
