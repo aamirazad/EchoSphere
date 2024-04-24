@@ -105,6 +105,7 @@ def printTweets():
         #yVal += 67.5
         yVal = barline.bottom
         full_tweet.add(icon,username,message, barline)
+    app.tweetPage.add(full_tweet)
 printTweets()
 
 
