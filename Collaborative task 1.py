@@ -44,9 +44,7 @@ app.tweet_text = Group(app.line1, app.line2, app.line3)
 tweet_seperator = Line(0,300,400,300,lineWidth=.25)
 app.tweetBox.add(Backarrow,drafts,Post, app.tweet_text, tweet_circle, tweet_seperator)
 app.tweetBox.visible = False
-up_arrow = Polygon(360,90,370,110,350,110)
-down_arrow = Polygon(350,270,370,270,360,290)
-app.arrows=Group(up_arrow, down_arrow)
+app.arrows=Group(Polygon(360,90,370,110,350,110),Polygon(350,270,370,270,360,290))
 # Sign in
 welcome = Label("Welcome to X",140,120, size=30)
 nameBox = Rect(50,150,300,50, fill=None, border="black")
@@ -154,9 +152,11 @@ def submitTweet():
         connection.close()
     go_home_page()
 
-def checkClick(object, mouseX, mouseY):
-    return object.hits(mouseX,mouseY) and object.visible
- 
+def checkClick(objects, mouseX, mouseY):
+    run = False
+    for object in objects:
+        run = object.hits(mouseX,mouseY) and object.visible
+    return run
 
 # manage mouse clicks
 def onMousePress(mouseX,mouseY):
@@ -173,16 +173,8 @@ def onMousePress(mouseX,mouseY):
         submitName()
     elif checkClick(Post, mouseX, mouseY):
         submitTweet()
-    elif checkClick(SigninCircle, mouseX, mouseY):
+    elif SigninCircle.hits(mouseX,mouseY) and SigninCircle.visible:
         SubmitUrl.visible= not SubmitUrl.visible
-    elif checkClick(up_arrow, mouseX, mouseY):
-        for tweet in app.tweetPage:
-            print(tweet)
-            tweet.centerY -= 100
-    elif checkClick(down_arrow, mouseX, mouseY):
-        for tweet in app.tweetPage:
-            tweet.centerY +
-
 
 # handle keypress
 def onKeyPress(key):
