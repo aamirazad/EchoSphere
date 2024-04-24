@@ -89,9 +89,6 @@ def printTweets():
     full_tweet = Group()
     for tweet in db:
         seed(tweet[1])
-        print(randint(0,255))
-        print(randint(0,255))
-        print(randint(0,255))
         color = randint(0,255) + randint(0,255) + randint(0,255)
         identicon = generate(tweet[1], primary=color, secondary=0xffffff)
         save(identicon, tweet[1] + "_icon.png", 500, 500)
