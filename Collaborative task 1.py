@@ -49,7 +49,7 @@ app.tweetBox.add(Backarrow,drafts,Post, app.tweet_text, tweet_circle, tweet_sepe
 app.tweetBox.visible = False
 up_arrow = Polygon(360,90,370,110,350,110)
 down_arrow = Polygon(350,270,370,270,360,290)
-app.arrows=Group(up_arrow, down_arrow)
+app.tweetPage.add(up_arrow, down_arrow)
 # Sign in
 welcome = Label("Welcome to X",140,120, size=30)
 nameBox = Rect(50,150,300,50, fill=None, border="black")
