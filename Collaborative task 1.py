@@ -83,7 +83,7 @@ def query_db(query):
 
 # manage tweet group
 def printTweets():    
-    yVal = 80    
+    yVal = 80
     app.tweetPage.clear()
     db = query_db("SELECT * FROM Tweets")
     full_tweet = Group()
