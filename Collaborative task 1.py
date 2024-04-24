@@ -82,7 +82,7 @@ def query_db(query):
 
 
 # manage tweet group
-def printTweets(line = 1):    
+def printTweets():    
     yVal = 80    
     app.tweetPage.clear()
     db = query_db("SELECT * FROM Tweets")
@@ -108,10 +108,6 @@ def printTweets(line = 1):
         #yVal += 67.5
         yVal = barline.bottom
         full_tweet.add(icon,username,message, barline)
-    if line == 1:
-        for tweet in full_tweet:
-            tweet.centerX -= 200
-    app.tweetPage.add(full_tweet, app.arrows)
 printTweets()
 
 
