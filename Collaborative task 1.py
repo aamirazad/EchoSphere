@@ -175,6 +175,14 @@ def onMousePress(mouseX,mouseY):
         submitTweet()
     elif SigninCircle.hits(mouseX,mouseY) and SigninCircle.visible:
         SubmitUrl.visible= not SubmitUrl.visible
+    elif checkClick(up_arrow, mouseX, mouseY):
+        for tweet in app.tweetPage:
+            tweet.centerY -= 100
+            app.header.toFront()
+    elif checkClick(down_arrow, mouseX, mouseY):
+        for tweet in app.tweetPage:
+            tweet.centerY += 100
+            app.header.toFront()
 
 # handle keypress
 def onKeyPress(key):
