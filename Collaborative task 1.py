@@ -178,7 +178,10 @@ def onMousePress(mouseX,mouseY):
     elif checkClick(up_arrow, mouseX, mouseY):
         for tweet in app.tweetPage:
             print(tweet)
-            tweet.centerX -= 100
+            tweet.centerY -= 100
+    elif checkClick(down_arrow, mouseX, mouseY):
+        for tweet in app.tweetPage:
+            tweet.centerY +
 
 
 # handle keypress
