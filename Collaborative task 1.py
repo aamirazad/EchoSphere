@@ -177,11 +177,12 @@ def onMousePress(mouseX,mouseY):
         SubmitUrl.visible= not SubmitUrl.visible
     elif checkClick(up_arrow, mouseX, mouseY):
         for tweet in app.tweetPage:
-            print(tweet)
             tweet.centerY -= 100
+            app.header.toFront()
     elif checkClick(down_arrow, mouseX, mouseY):
         for tweet in app.tweetPage:
-            tweet.centerY +
+            tweet.centerY += 100
+            app.header.toFront()
 
 
 # handle keypress
