@@ -37,6 +37,8 @@ Post=Group(Oval(330,30,50,20),Label('Post',330,30,size=15, bold=True,fill='white
 #app.signInBox
 if app.name:
     tweet_circle = Image(app.name+'_icon.png',35,95)
+else:
+    tweet_circle
 app.line1 = Label('What is Happening?!',165,95, size=20,fill='darkgray')
 app.line2 = Label('',165,120,size=20)
 app.line3 = Label('',165,145,size=20)
