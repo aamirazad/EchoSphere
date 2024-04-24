@@ -35,7 +35,8 @@ Backarrow=Group(Polygon(12,25,25,15,25,35),Line(25,25,45,25))
 drafts= Label('Drafts',260,30,size=15,bold=True)
 Post=Group(Oval(330,30,50,20),Label('Post',330,30,size=15, bold=True,fill='white'))
 #app.signInBox
-tweet_circle = Image(app.name+'_icon.png',35,95)
+if app.name:
+    tweet_circle = Image(app.name+'_icon.png',35,95)
 app.line1 = Label('What is Happening?!',165,95, size=20,fill='darkgray')
 app.line2 = Label('',165,120,size=20)
 app.line3 = Label('',165,145,size=20)
