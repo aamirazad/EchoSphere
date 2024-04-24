@@ -28,7 +28,7 @@ app.user_welcome = Label("", 110,20)
 app.tweetPage = Group()
 app.tweetBox = Group()
 app.signIn = Group()
-
+app.full_tweet = Group()
 #Tweet Box
 #backarrow
 Backarrow=Group(Polygon(12,25,25,15,25,35),Line(25,25,45,25))
@@ -49,7 +49,6 @@ app.tweetBox.add(Backarrow,drafts,Post, app.tweet_text, tweet_circle, tweet_sepe
 app.tweetBox.visible = False
 up_arrow = Polygon(360,90,370,110,350,110)
 down_arrow = Polygon(350,270,370,270,360,290)
-app.tweetPage.add(up_arrow, down_arrow)
 # Sign in
 welcome = Label("Welcome to X",140,120, size=30)
 nameBox = Rect(50,150,300,50, fill=None, border="black")
@@ -91,7 +90,6 @@ def printTweets():
     yVal = 80
     app.tweetPage.clear()
     db = query_db("SELECT * FROM Tweets")
-    full_tweet = Group()
     for tweet in db:
         seed(tweet[1])
         color = randint(0,255) + randint(0,255) + randint(0,255)
@@ -109,8 +107,10 @@ def printTweets():
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         #yVal += 67.5
         yVal = barline.bottom
-        full_tweet.add(icon,username,message, barline)
-    app.tweetPage.add(full_tweet)
+        app.full_tweet.add(icon,username,message, barline)
+        up_arrow = Polygon(360,90,370,110,350,110)
+        down_arrow = Polygon(350,270,370,270,360,290)
+    app.tweetPage.add(app.full_tweet, up_arrow, down_arrow)
 printTweets()
 
 
@@ -157,11 +157,8 @@ def submitTweet():
         connection.close()
     go_home_page()
 
-def checkClick(objects, mouseX, mouseY):
-    run = False
-    for object in objects:
-        run = object.hits(mouseX,mouseY) and object.visible
-    return run
+def checkClick(object, mouseX, mouseY):
+    return object.hits(mouseX,mouseY) and object.visible
 
 # manage mouse clicks
 def onMousePress(mouseX,mouseY):
@@ -181,11 +178,11 @@ def onMousePress(mouseX,mouseY):
     elif SigninCircle.hits(mouseX,mouseY) and SigninCircle.visible:
         SubmitUrl.visible= not SubmitUrl.visible
     elif checkClick(up_arrow, mouseX, mouseY):
-        for tweet in app.tweetPage:
+        for tweet in app.full_tweet:
             tweet.centerY -= 100
             app.header.toFront()
     elif checkClick(down_arrow, mouseX, mouseY):
-        for tweet in app.tweetPage:
+        for tweet in app.full_tweet:
             tweet.centerY += 100
             app.header.toFront()
 
