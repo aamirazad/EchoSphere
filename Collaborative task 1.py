@@ -178,6 +178,7 @@ def onMousePress(mouseX,mouseY):
         SubmitUrl.visible= not SubmitUrl.visible
     elif checkClick(up_arrow, mouseX, mouseY):
         for tweet in app.tweetPage:
+            print(tweet)
             tweet.centerX -= 100
 
 
