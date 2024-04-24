@@ -177,7 +177,8 @@ def onMousePress(mouseX,mouseY):
     elif checkClick(SigninCircle, mouseX, mouseY):
         SubmitUrl.visible= not SubmitUrl.visible
     elif checkClick(up_arrow, mouseX, mouseY):
-        app.tweetPage.centerX -= 100
+        for tweet in app.tweetPage:
+            tweet.centerX -= 100
 
 
 # handle keypress
