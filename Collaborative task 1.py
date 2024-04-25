@@ -18,6 +18,7 @@ Following=Label('Following', 265,55, size=15,bold=True)
 Logo=Image('x_logo.png', 178,-2)
 Logo.width= 45
 Logo.height = 45
+whitebox = Rect()
 
 ## pages
 app.header = Group(signInButton,seperator,ForYou,Following,Logo)
