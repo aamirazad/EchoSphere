@@ -211,8 +211,11 @@ def onKeyPress(key):
     elif app.tweetBox.visible:
         if key == "space":
             app.text += " "
-        if key == "backspace":
+        elif key == "backspace":
             app.text = app.text[:-1]
+        elif key == "enter":
+            if app.text.count("\n") < 2:
+                app.text += "\n"
         valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789'
         list_of_valid_characters = list(valid_characters)
         if key in list_of_valid_characters:
