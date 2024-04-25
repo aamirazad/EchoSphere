@@ -226,6 +226,8 @@ def onKeyPress(key):
             if len(line) >= 20:
                 if app.text.count("\n") < 2:
                     app.text += "\n"
+                else:
+                    app.text = app.text[:-1]
 
         for line in app.list_of_lines:
             line.value = ""
@@ -233,9 +235,6 @@ def onKeyPress(key):
         if lines:
             for count, line in enumerate(lines):
                 if line:
-                    if len(line) >= 20:
-                        if app.text.count("\n") < 2:
-                            app.text += "\n"
                     app.list_of_lines[count].fill = "black"
                     app.list_of_lines[count].value = line
                     app.list_of_lines[count].left = 65
