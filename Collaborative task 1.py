@@ -186,7 +186,6 @@ def onMousePress(mouseX,mouseY):
     elif checkClick(down_arrow, mouseX, mouseY):
         for tweet in app.full_tweet:
             tweet.centerY -= 150
-            
         app.header.toFront()
 
 # handle keypress
