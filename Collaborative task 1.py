@@ -51,14 +51,7 @@ welcome = Label("Welcome to X",140,120, size=30)
 nameBox = Rect(50,150,300,50, fill=None, border="black")
 app.signInBox= Label("Enter username", 200,170,size=30, font="grenze", fill="darkGray")
 submitButton=Group( Rect(250,325,100,20),Label('Sign In',300,335,fill='white',bold=True))
-Picture= Image('Aamir Azad.png',50,225)
-SigninCircle=Circle(Picture.centerX-2.5,Picture.centerY,30,fill='darkgray',opacity=45)
-SigninCircle.toBack()
-urlLabel=Label("Insert URL",85,310,size=15,font='monospace')
-SubmitUrl=Group(Rect(35,300,200,25,fill=None,border='Black'),urlLabel)
-SubmitUrl.visible=False
-Instruction=Label('Insert Picture',Picture.centerX+95,Picture.centerY, bold=True, size=15, font='monospace' )
-app.signIn.add(welcome,nameBox, app.signInBox,submitButton,Picture,SigninCircle,Instruction,SubmitUrl)
+app.signIn.add(welcome,nameBox, app.signInBox,submitButton,)
 app.signIn.visible = False
 #Vecteezy :denyzdrozd
 
@@ -138,7 +131,6 @@ def sign_in_page():
     app.stepsPerSecond = 30
     app.text = ""
     new_post.visible = False
-    SubmitUrl.visible=False
 
 def go_home_page():
     handlePage(app.tweetPage)
@@ -177,8 +169,6 @@ def onMousePress(mouseX,mouseY):
         submitName()
     elif checkClick(Post, mouseX, mouseY):
         submitTweet()
-    elif SigninCircle.hits(mouseX,mouseY) and SigninCircle.visible:
-        SubmitUrl.visible= not SubmitUrl.visible
     elif checkClick(up_arrow, mouseX, mouseY):
         for tweet in app.full_tweet:
             tweet.centerY += 150
@@ -194,32 +184,19 @@ def onKeyPress(key):
     #    if app.text.count("\n") < 2:
     #        app.text += "\n"
     if app.signIn.visible:
-        if SubmitUrl.visible:
-            if urlLabel.value == "Insert URL":
-                urlLabel.value = ""
-            if key == "backspace":
-                urlLabel.value = urlLabel.value[:-1]
-            else:
-                urlLabel.value += key
-            urlLabel.left = 40
+        if key == "backspace":
+            app.text = app.text[:-1]
+        valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789'
+        list_of_valid_characters = list(valid_characters)
+        if key in list_of_valid_characters and len(app.text) <= 8:
+            app.text += key
+        lines = app.text.splitlines()
+        if lines:
+            app.signInBox.fill = "black"
+            app.signInBox.value = lines[0]
+            app.signInBox.left = 60
         else:
-            if key == "backspace":
-                app.text = app.text[:-1]
-            valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789'
-            list_of_valid_characters = list(valid_characters)
-            if key in list_of_valid_characters and len(app.text) <= 8:
-                app.text += key
-            lines = app.text.splitlines()
-            if lines:
-                app.signInBox.fill = "black"
-                app.signInBox.value = lines[0]
-                app.signInBox.left = 60
-            else:
-                app.signInBox.value = ""
-            # for line in lines:
-            #     if line.count("\n") < 2 and len(line) < 20:
-            #         app.text += key
-            # app.text += key
+            app.signInBox.value = ""
     elif app.tweetBox.visible:
         if key == "space":
             app.text += " "
