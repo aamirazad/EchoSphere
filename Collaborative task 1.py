@@ -123,8 +123,8 @@ def new_tweet():
         try:
             app.tweet_circle.visible = False
             profile_picture = Image(app.name+'_icon.png',30,90)
-            profile_picture.width=30
-            profile_picture.height=30
+            profile_picture.width=25
+            profile_picture.height=25
         except:
             app.tweet_circle = True
     app.stepsPerSecond = 30
