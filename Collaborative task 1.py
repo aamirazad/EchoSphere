@@ -239,4 +239,6 @@ def onKeyPress(key):
                     app.list_of_lines[count].left = 65
                 else:
                     app.list_of_lines[count].value = ""
+        else:
+            app.list_of_lines[0].value = ""
 cmu_graphics.run()
