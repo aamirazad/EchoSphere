@@ -220,9 +220,15 @@ def onKeyPress(key):
         list_of_valid_characters = list(valid_characters)
         if key in list_of_valid_characters and len(app.text) <= 8:
             app.text += key
+        for line in app.list_of_lines:
+            line.value = ""
         lines = app.text.splitlines()
-        for count, line in enumerate(lines):
-                app.list_of_lines[count].fill = "black"
-                app.list_of_lines[count].value += line
-                app.list_of_lines[count].left = 65
+        if lines:
+            for count, line in enumerate(lines):
+                if line:
+                    if len(line) >= 20:
+                        app.text = app.text[:-1]
+                    app.list_of_lines[count].fill = "black"
+                    app.list_of_lines[count].value = line
+                    app.list_of_lines[count].left = 65
 cmu_graphics.run()
