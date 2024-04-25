@@ -109,7 +109,7 @@ printTweets()
 def createIcon(name):
     color = randint(0,255) + randint(0,255) + randint(0,255)
     identicon = generate(name, primary=color, secondary=0xffffff)
-    save(identicon, name + "/icons_icon.png", 500, 500)
+    save(identicon, name + "/icons/_icon.png", 500, 500)
     app.icon = name + "_icon.png"
 
 # ui manager
