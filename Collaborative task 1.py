@@ -125,7 +125,7 @@ def new_tweet():
     app.text = ""
     for line in app.list_of_lines:
         line.value = ""
-    app.line1 = Label('What is Happening?!',165,95, size=20,fill='darkgray')
+    app.list_of_lines[0] = Label('What is Happening?!',165,95, size=20,fill='darkgray')
     if app.name:
         try:
             app.tweet_circle.visible = False
@@ -218,7 +218,7 @@ def onKeyPress(key):
                     app.text += "\n"
         valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789'
         list_of_valid_characters = list(valid_characters)
-        if key in list_of_valid_characters and len(app.text) <= 8:
+        if key in list_of_valid_characters:
             app.text += key
         for line in app.list_of_lines:
             line.value = ""
