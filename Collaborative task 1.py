@@ -90,7 +90,6 @@ def printTweets():
             message.add(Label(line,username.right,lineYVal,size=20))
             message.left = 70
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
-        #yVal += 67.5
         yVal = barline.bottom
         app.full_tweet.add(icon,username,message, barline)
         up_arrow = Polygon(360,90,370,110,350,110)
