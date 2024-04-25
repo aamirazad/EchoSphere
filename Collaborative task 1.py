@@ -10,7 +10,7 @@ new_post = Image('new_icon.png', 330, 330)
 signInButton = Image('sign_in2.png', 5,5)
 signInButton.centerX = 20
 signInButton.centerY = 20
-
+whitebox = Rect(0,0,400,80, fill="White")
 seperator = Line(0,80, 400,80, fill='black',opacity=35)
 ForYou= Label('For you', 125,55, size=15,bold=True)
 Following=Label('Following', 265,55, size=15,bold=True)
@@ -18,10 +18,9 @@ Following=Label('Following', 265,55, size=15,bold=True)
 Logo=Image('x_logo.png', 178,-2)
 Logo.width= 45
 Logo.height = 45
-whitebox = Rect(0,0,400,80, fill="White")
 
 ## pages
-app.header = Group(signInButton,seperator,ForYou,Following,Logo)
+app.header = Group(whitebox,signInButton,seperator,ForYou,Following,Logo,)
 app.text = ["", "", ""]
 app.name = ""
 app.icon=''
