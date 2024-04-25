@@ -223,6 +223,6 @@ def onKeyPress(key):
         lines = app.text.splitlines()
         for count, line in enumerate(lines):
                 app.list_of_lines[count].fill = "black"
-                app.list_of_lines[count].value += key
+                app.list_of_lines[count].value += line
                 app.list_of_lines[count].left = 65
 cmu_graphics.run()
