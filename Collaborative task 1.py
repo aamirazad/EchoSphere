@@ -99,17 +99,17 @@ def printTweets():
 printTweets()
 
 def createIcon(name):
-    color = randint(0,255) + randint(0,255) + randint(0,255)
-    identicon = generate(name, primary=color, secondary=0xffffff)
-    save(identicon, name + "_icon.png", 500, 500)
-    app.icon = name + "_icon.png"
-
+    #color = randint(0,255) + randint(0,255) + randint(0,255)
     hash_val = hash(name)
     red = (hash_val & 0xFF0000) >> 16
     green = (hash_val & 0x00FF00) >> 8
     blue = hash_val & 0x0000FF
     color = (red << 16) + (green << 8) + blue
-    print(color)
+    identicon = generate(name, primary=color, secondary=0xffffff)
+    save(identicon, name + "_icon.png", 500, 500)
+    app.icon = name + "_icon.png"
+
+
 
 # ui manager
 def handlePage(page):
