@@ -106,11 +106,11 @@ def printTweets():
     app.tweetPage.add(app.full_tweet, up_arrow, down_arrow)
 printTweets()
 
-def createIcon():
+def createIcon(name):
     color = randint(0,255) + randint(0,255) + randint(0,255)
-    identicon = generate(app.name, primary=color, secondary=0xffffff)
-    save(identicon, app.name + "_icon.png", 500, 500)
-    app.icon = app.name + "_icon.png"
+    identicon = generate(name, primary=color, secondary=0xffffff)
+    save(identicon, name + "/icons_icon.png", 500, 500)
+    app.icon = name + "_icon.png"
 
 # ui manager
 def handlePage(page):
@@ -149,6 +149,7 @@ def go_home_page():
 def submitName():
     go_home_page()
     app.name = app.signInBox.value
+    createIcon(app.name)
 
 
 def submitTweet():
