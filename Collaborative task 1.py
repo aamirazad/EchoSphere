@@ -121,11 +121,12 @@ def new_tweet():
     app.list_of_lines[0].value = "What is Happening?!"
     if app.name:
         try:
-            app.tweet_circle = Image(app.name+'_icon.png',30,90)
-            app.tweet_circle.width=30
-            app.tweet_circle.height=30
+            app.tweet_circle.visible = False
+            profile_picture = Image(app.name+'_icon.png',30,90)
+            profile_picture.width=30
+            profile_picture.height=30
         except:
-            app.tweet_circle = Circle(35,95,20)
+            app.tweet_circle = True
     app.stepsPerSecond = 30
     app.header.visible=False
 
