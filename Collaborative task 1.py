@@ -69,7 +69,6 @@ connection.execute('''
                    CREATE TABLE IF NOT EXISTS Tweets(
                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                    username TEXT NOT NULL,
-                   icon TEXT,
                    content TEXT NOT NULL,
                    date_created INTEGER NOT NULL)''')
 connection.commit()
