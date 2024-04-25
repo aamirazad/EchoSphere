@@ -125,8 +125,7 @@ def new_tweet():
     app.text = ""
     for line in app.list_of_lines:
         line.value = ""
-    app.list_of_lines[0].value = "What is Happening?!"
-    app.list_of_lines[0].value = "What is Happening?!"
+    app.line1 = Label('What is Happening?!',165,95, size=20,fill='darkgray')
     if app.name:
         try:
             app.tweet_circle.visible = False
