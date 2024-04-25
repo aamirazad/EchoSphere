@@ -88,10 +88,6 @@ def printTweets():
     app.tweetPage.clear()
     db = query_db("SELECT * FROM Tweets")
     for tweet in db:
-        seed(tweet[1])
-        color = randint(0,255) + randint(0,255) + randint(0,255)
-        identicon = generate(tweet[1], primary=color, secondary=0xffffff)
-        save(identicon, tweet[1] + "_icon.png", 500, 500)
         icon = Image(tweet[1] + "_icon.png", 20,yVal+10)
         icon.width=20
         icon.height=20
@@ -110,6 +106,11 @@ def printTweets():
     app.tweetPage.add(app.full_tweet, up_arrow, down_arrow)
 printTweets()
 
+def createIcon():
+    color = randint(0,255) + randint(0,255) + randint(0,255)
+    identicon = generate(app.name, primary=color, secondary=0xffffff)
+    save(identicon, app.name + "_icon.png", 500, 500)
+    app.icon = app.name + "_icon.png"
 
 # ui manager
 def handlePage(page):
@@ -147,13 +148,13 @@ def go_home_page():
 
 def submitName():
     go_home_page()
-    app.icon=urlLabel.value
     app.name = app.signInBox.value
+
 
 def submitTweet():
     if app.name and app.text:
         connection = sqlite3.connect("database.db")
-        connection.execute("INSERT INTO Tweets (username, icon, content, date_created) VALUES (?, ?, ?)", (app.name, app.icon, app.text, datetime.now()))
+        connection.execute("INSERT INTO Tweets (username, content, date_created) VALUES (?, ?, ?)", (app.name, app.text, datetime.now()))
         connection.commit()
         connection.close()
     go_home_page()
