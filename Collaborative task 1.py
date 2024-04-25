@@ -216,6 +216,10 @@ def onKeyPress(key):
             if len(line) >= 20:
                 if app.text.count("\n") < 2:
                     app.text += "\n"
+        valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789'
+        list_of_valid_characters = list(valid_characters)
+        if key in list_of_valid_characters and len(app.text) <= 8:
+            app.text += key
         lines = app.text.splitlines()
         for count, line in enumerate(lines):
                 app.list_of_lines[count].fill = "black"
