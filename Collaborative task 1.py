@@ -104,6 +104,13 @@ def createIcon(name):
     save(identicon, name + "_icon.png", 500, 500)
     app.icon = name + "_icon.png"
 
+    hash_val = hash(name)
+    red = (hash_val & 0xFF0000) >> 16
+    green = (hash_val & 0x00FF00) >> 8
+    blue = hash_val & 0x0000FF
+    color = (red << 16) + (green << 8) + blue
+    print(color)
+
 # ui manager
 def handlePage(page):
     app.tweetPage.visible = False
