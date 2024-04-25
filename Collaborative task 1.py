@@ -222,13 +222,12 @@ def onKeyPress(key):
             app.text += key
         
         lines = app.text.splitlines()
-        for line in lines:
-            if len(line) >= 20:
-                if app.text.count("\n") < 2:
-                    app.text += "\n"
-                else:
-                    print("why")
-                    app.text = app.text[:-1]
+        if len(lines[-1]) >= 20:
+            if app.text.count("\n") < 2:
+                app.text += "\n"
+            else:
+                print("why")
+                app.text = app.text[:-1]
 
         lines = app.text.splitlines()
         if lines:
