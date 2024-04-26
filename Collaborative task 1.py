@@ -231,6 +231,7 @@ def onKeyPress(key):
         lines = app.text.splitlines()
         for count, line in enumerate(lines):
             if len(line) >= 20:
+                print("***".join(wds))
                 if app.text.count("\n") < 2:
                     app.text += "\n"
                 else:
