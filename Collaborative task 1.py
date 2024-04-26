@@ -102,6 +102,7 @@ printTweets()
 
 def createIcon(name):
     #color = randint(0,255) + randint(0,255) + randint(0,255)
+
     hash_val = hash(name)
     red = (hash_val & 0xFF0000) >> 16
     green = (hash_val & 0x00FF00) >> 8
