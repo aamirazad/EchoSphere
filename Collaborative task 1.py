@@ -231,8 +231,7 @@ def onKeyPress(key):
                 if app.text.count("\n") < 2:
                     app.text =+ "\n"
             app.text += key
-        lines = app.text.splitlines()
-
+    
         lines = app.text.splitlines()
         if lines:
             for count, line in enumerate(lines):
