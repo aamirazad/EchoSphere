@@ -94,7 +94,7 @@ def printTweets():
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         yVal = barline.bottom
         app.full_tweet.add(icon,username,message, barline,)
-        Trash=Line(full_tweet.centerX+30,full_tweet.centerY-20,full_tweet.centerX+300, full_tweet.centerY-10)
+        Trash=Line(full_tweet.centerX+30,full_tweet.centerY-20,full_tweet.centerX+40, full_tweet.centerY-10)
         app.full_tweet.add(Trash)
         up_arrow = Polygon(360,90,370,110,350,110)
         down_arrow = Polygon(350,270,370,270,360,290)
