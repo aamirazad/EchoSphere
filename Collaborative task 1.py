@@ -80,7 +80,6 @@ def printTweets():
     app.tweetPage.clear()
     app.full_tweet.clear()
     db = query_db("SELECT * FROM Tweets")
-    full_tweet = Group()
     for tweet in db:
         icon = Image(tweet[1] + "_icon.png", 20,yVal+10)
         icon.width=20
@@ -93,6 +92,7 @@ def printTweets():
             message.left = 70
         #Trash=Circle(270,,20)
         Trash=Group(Line(270,lineYVal-25,280,lineYVal-10),Line(280,lineYVal-25,270,lineYVal-10))
+        Trash.id = tweet[0]
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         yVal = barline.bottom
         app.full_tweet.add(icon,username,message, barline,Trash)
