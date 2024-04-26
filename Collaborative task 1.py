@@ -229,9 +229,11 @@ def onKeyPress(key):
             lines = app.text.splitlines()
             if lines:
                 if len(lines[-1]) > 20:
-                    if app.text.count("\n") < 2:
-                        app.text =+ "\n"
+                    app.text =+ "\n"
             app.text += key
+            if app.text.count("\n") < 2:
+                app.text =+ "\n"
+
     
         lines = app.text.splitlines()
         if lines:
