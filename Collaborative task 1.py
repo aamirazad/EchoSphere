@@ -78,6 +78,7 @@ def query_db(query):
 def printTweets():    
     yVal = 80
     app.tweetPage.clear()
+    app.full_tweet.clear()
     db = query_db("SELECT * FROM Tweets")
     full_tweet = Group()
     for tweet in db:
@@ -221,17 +222,16 @@ def onKeyPress(key):
         elif key == "enter":
             if app.text.count("\n") < 2:
                 app.text += "\n"
-        valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789'
+        valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789.!'
         list_of_valid_characters = list(valid_characters)
         if key in list_of_valid_characters:
+            lines = app.text.splitlines()
+            if len(lines[-1]):
+                if app.text.count("\n") < 2:
+
+                    app.text =+ "\n"
             app.text += key
-        
         lines = app.text.splitlines()
-        if len(lines[-1]) >= 20:
-            if app.text.count("\n") < 2:
-                app.text += "\n"
-            else:
-                app.text = app.text[:-1]
 
         lines = app.text.splitlines()
         if lines:
