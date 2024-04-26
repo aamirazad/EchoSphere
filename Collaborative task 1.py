@@ -90,10 +90,10 @@ def printTweets():
             lineYVal = (count * 30) + (yVal+35)
             message.add(Label(line,username.right,lineYVal,size=20))
             message.left = 70
-        Trash=Line
+        Trash=Line(username.x+260,username.y-30,username.x+300, username.y-10)
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         yVal = barline.bottom
-        app.full_tweet.add(icon,username,message, barline)
+        app.full_tweet.add(icon,username,message, barline,Trash)
         up_arrow = Polygon(360,90,370,110,350,110)
         down_arrow = Polygon(350,270,370,270,360,290)
     app.tweetPage.add(app.full_tweet, up_arrow, down_arrow)
@@ -186,14 +186,12 @@ def onMousePress(mouseX,mouseY):
     elif checkClick(Post, mouseX, mouseY):
         submitTweet()
     elif checkClick(up_arrow, mouseX, mouseY):
-        app.full_tweet.centerY += 150
-        # for tweet in app.full_tweet:
-        #     tweet.centerY += 150
-        app.header.toFront()
+        for tweet in app.full_tweet:
+            tweet.centerY += 150
+            app.header.toFront()
     elif checkClick(down_arrow, mouseX, mouseY):
-        app.full_tweet.centerY -= 150
-        # for tweet in app.full_tweet:
-        #     tweet.centerY -= 150
+        for tweet in app.full_tweet:
+            tweet.centerY -= 150
         app.header.toFront()
 
 # handle keypress
