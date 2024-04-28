@@ -1,6 +1,6 @@
 import sqlite3
 from datetime import datetime
-from random import randint, seed
+from time import sleep
 from identicons import generate, save
 from cmu_graphics import *
 
@@ -14,6 +14,7 @@ whitebox = Rect(0,0,400,80, fill="White")
 seperator = Line(0,80, 400,80, fill='black',opacity=35)
 ForYou= Label('For you', 125,55, size=15,bold=True)
 Following=Label('Following', 265,55, size=15,bold=True)
+
 
 Logo=Image('x_logo.png', 178,-2)
 Logo.width= 45
@@ -29,6 +30,10 @@ app.tweetPage = Group()
 app.tweetBox = Group()
 app.signIn = Group()
 app.full_tweet = Group()
+
+up_arrow = Polygon(360,90,370,110,350,110)
+down_arrow = Polygon(350,270,370,270,360,290)
+app.tweetPage.add(up_arrow, down_arrow)
 #Tweet Box
 #backarrow
 Backarrow=Group(Polygon(12,25,25,15,25,35),Line(25,25,45,25))
@@ -44,8 +49,6 @@ app.tweet_text = Group(app.line1, app.line2, app.line3)
 tweet_seperator = Line(0,300,400,300,lineWidth=.25)
 app.tweetBox.add(Backarrow,drafts,Post, app.tweet_text, app.tweet_circle, tweet_seperator)
 app.tweetBox.visible = False
-up_arrow = Polygon(360,90,370,110,350,110)
-down_arrow = Polygon(350,270,370,270,360,290)
 # Sign in
 welcome = Label("Welcome to X",140,120, size=30)
 nameBox = Rect(50,150,300,50, fill=None, border="black")
@@ -96,13 +99,10 @@ def printTweets():
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         yVal = barline.bottom
         app.full_tweet.add(icon,username,message, barline,Trash)
-        up_arrow = Polygon(360,90,370,110,350,110)
-        down_arrow = Polygon(350,270,370,270,360,290)
-    app.tweetPage.add(app.full_tweet, up_arrow, down_arrow)
+    app.tweetPage.add(app.full_tweet)
 printTweets()
 
 def createIcon(name):
-    #color = randint(0,255) + randint(0,255) + randint(0,255)
     hash_val = hash(name)
     red = (hash_val & 0xFF0000) >> 16
     green = (hash_val & 0x00FF00) >> 8
@@ -167,7 +167,12 @@ def submitTweet():
         connection.execute("INSERT INTO Tweets (username, content, date_created) VALUES (?, ?, ?)", (app.name, app.text, datetime.now()))
         connection.commit()
         connection.close()
-    go_home_page()
+        go_home_page()
+    else:
+        error = Label("You're not signed in!", 200,200, size=30)
+        sleep(2)
+        error.visible = False
+
 
 def checkClick(object, mouseX, mouseY):
     return object.hits(mouseX,mouseY) and object.visible
@@ -220,6 +225,8 @@ def onKeyPress(key):
         if key == "space":
             app.text += " "
         elif key == "backspace":
+            if app.text[-1] == "\n":
+                app.text = app.text[:-1]
             app.text = app.text[:-1]
         elif key == "enter":
             if app.text.count("\n") < 2:
@@ -229,21 +236,22 @@ def onKeyPress(key):
         if key in list_of_valid_characters:
             lines = app.text.splitlines()
             if lines:
-                if len(lines[-1]) > 20:
-                    app.text =+ "\n"
-            app.text += key
-            if app.text.count("\n") > 2:
-                app.text =+ "\n"
+                if len(lines[-1]) >= 20:
+                    if app.text.count("\n") < 2:
+                        app.text += "\n"
+                        app.text += key
+                else:
+                    app.text += key
+            else:
+                app.text += key
     
         lines = app.text.splitlines()
-        if lines:
-            for count, line in enumerate(lines):
-                if line:
-                    app.list_of_lines[count].fill = "black"
-                    app.list_of_lines[count].value = line
-                    app.list_of_lines[count].left = 65
-                else:
-                    app.list_of_lines[count].value = ""
-        else:
-            app.list_of_lines[0].value = ""
+        for count, line in enumerate(app.list_of_lines):
+            if len(lines) > count:
+                line.fill = "black"
+                line.value = lines[count]
+                line.left = 65
+            else:
+                line.value = ""
+
 cmu_graphics.run()
