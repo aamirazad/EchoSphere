@@ -183,7 +183,6 @@ def onMousePress(mouseX,mouseY):
         submitTweet()  
     elif checkClick(app.up_arrow, mouseX, mouseY):
         if app.full_tweet.top>=80:
-            print('checkClick')
             for tweet in app.full_tweet:
                 tweet.centerY+=0
                 app.header.toFront()
