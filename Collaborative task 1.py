@@ -231,12 +231,15 @@ def onKeyPress(key):
         if key in list_of_valid_characters:
             lines = app.text.splitlines()
             if lines:
-                if len(lines[-1]) >= 20:
-                    if app.text.count("\n") < 2:
-                        app.text += "\n"
+                try:
+                    if len(lines[-1]) >= 20:
+                        if app.text.count("\n") < 2:
+                            app.text += "\n"
+                            app.text += key
+                    else:
                         app.text += key
-                else:
-                    app.text += key
+                except:
+                    app.text = ""
             else:
                 app.text += key
     
