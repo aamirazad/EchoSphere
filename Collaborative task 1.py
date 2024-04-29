@@ -30,10 +30,6 @@ app.tweetPage = Group()
 app.tweetBox = Group()
 app.signIn = Group()
 app.full_tweet = Group()
-
-up_arrow = Polygon(360,90,370,110,350,110)
-down_arrow = Polygon(350,270,370,270,360,290)
-app.tweetPage.add(up_arrow, down_arrow)
 #Tweet Box
 #backarrow
 Backarrow=Group(Polygon(12,25,25,15,25,35),Line(25,25,45,25))
