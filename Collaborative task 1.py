@@ -190,7 +190,7 @@ def onMousePress(mouseX,mouseY):
     for x in app.trash:
         if checkClick(x, mouseX, mouseY):
             id = x.id
-            query_db("DELETE FROM Tweets; WHERE")
+            query_db("DELETE FROM Tweets; WHERE id = ?", id)
 
 # handle keypress
 def onKeyPress(key):
