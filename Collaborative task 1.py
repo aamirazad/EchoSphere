@@ -4,8 +4,6 @@ from time import sleep
 from identicons import generate, save
 from cmu_graphics import *
 
-# UI
-#new by Adrien Coquet from Noun Project (CC BY 3.0)
 new_post = Image('new_icon.png', 330, 330)
 signInButton = Image('sign_in2.png', 5,5)
 signInButton.centerX = 20
@@ -14,13 +12,10 @@ whitebox = Rect(0,0,400,80, fill="White")
 seperator = Line(0,80, 400,80, fill='black',opacity=35)
 ForYou= Label('For you', 125,55, size=15,bold=True)
 Following=Label('Following', 265,55, size=15,bold=True)
-
-
 Logo=Image('x_logo.png', 178,-2)
 Logo.width= 45
 Logo.height = 45
 
-## pages
 app.header = Group(whitebox,signInButton,seperator,ForYou,Following,Logo,)
 app.text = ["", "", ""]
 app.name = ""
@@ -30,12 +25,11 @@ app.tweetPage = Group()
 app.tweetBox = Group()
 app.signIn = Group()
 app.full_tweet = Group()
-#Tweet Box
-#backarrow
+
 Backarrow=Group(Polygon(12,25,25,15,25,35),Line(25,25,45,25))
 drafts= Label('Drafts',260,30,size=15,bold=True)
 Post=Group(Oval(330,30,50,20),Label('Post',330,30,size=15, bold=True,fill='white'))
-#app.signInBox
+
 app.tweet_circle = Circle(35,95,20)
 app.line1 = Label('What is Happening?!',165,95, size=20,fill='darkgray')
 app.line2 = Label('',165,120,size=20)
@@ -45,16 +39,13 @@ app.tweet_text = Group(app.line1, app.line2, app.line3)
 tweet_seperator = Line(0,300,400,300,lineWidth=.25)
 app.tweetBox.add(Backarrow,drafts,Post, app.tweet_text, app.tweet_circle, tweet_seperator)
 app.tweetBox.visible = False
-# Sign in
+
 welcome = Label("Welcome to X",140,120, size=30)
 nameBox = Rect(50,150,300,50, fill=None, border="black")
 app.signInBox= Label("Enter username", 200,170,size=30, font="grenze", fill="darkGray")
 submitButton=Group( Rect(250,325,100,20),Label('Sign In',300,335,fill='white',bold=True))
 app.signIn.add(welcome,nameBox, app.signInBox,submitButton,)
 app.signIn.visible = False
-#Vecteezy :denyzdrozd
-
-### INIT DATABASE
 
 connection = sqlite3.connect("database.db")
 connection.execute('''
@@ -72,8 +63,6 @@ def query_db(query):
     connection.close()
     return rows
 
-
-# manage tweet group
 def printTweets():    
     yVal = 80
     app.tweetPage.clear()
@@ -89,7 +78,6 @@ def printTweets():
             lineYVal = (count * 30) + (yVal+35)
             message.add(Label(line,username.right,lineYVal,size=20))
             message.left = 70
-        #Trash=Circle(270,,20)
         Trash=Group(Line(300,lineYVal-25,310,lineYVal-10),Line(310,lineYVal-25,300,lineYVal-10))
         Trash.id = tweet[0]
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
@@ -175,7 +163,6 @@ def submitTweet():
 def checkClick(object, mouseX, mouseY):
     return object.hits(mouseX,mouseY) and object.visible
 
-# manage mouse clicks
 def onMousePress(mouseX,mouseY):
     if new_post.hits(mouseX,mouseY) and new_post.visible:
         new_tweet()
@@ -201,9 +188,6 @@ def onMousePress(mouseX,mouseY):
 
 # handle keypress
 def onKeyPress(key):
-    #elif key == "enter":
-    #    if app.text.count("\n") < 2:
-    #        app.text += "\n"
     if app.signIn.visible:
         if key == "backspace":
             app.text = app.text[:-1]
