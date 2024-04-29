@@ -196,12 +196,9 @@ def onMousePress(mouseX,mouseY):
         for tweet in app.full_tweet:
             tweet.centerY -= 150
         app.header.toFront()
+    print("pree")
     if checkClick(app.trash, mouseX, mouseY):
         print("in for loop")
-        # if x.hits(mouseX, mouseY):
-        #     id = x.id
-        #     print("removed")
-        #     #query_db("DELETE FROM Tweets; WHERE id = ?", id)
 
 # handle keypress
 def onKeyPress(key):
