@@ -195,6 +195,7 @@ def onMousePress(mouseX,mouseY):
             tweet.centerY -= 150
         app.header.toFront()
     for x in app.trash:
+        print("in for loop")
         if x.hits(mouseX, mouseY):
             id = x.id
             print("removed")
