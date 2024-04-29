@@ -180,8 +180,7 @@ def onMousePress(mouseX,mouseY):
     elif submitButton.hits(mouseX,mouseY) and submitButton.visible:
         submitName()
     elif checkClick(Post, mouseX, mouseY):
-        submitTweet()
-    
+        submitTweet()  
     elif checkClick(app.up_arrow, mouseX, mouseY):
         if app.full_tweet.top>=80:
             print('checkClick')
@@ -196,8 +195,7 @@ def onMousePress(mouseX,mouseY):
         for tweet in app.full_tweet:
             tweet.centerY -= 150
         app.header.toFront()
-    print("pree")
-    if checkClick(app.trash, mouseX, mouseY):
+    elif checkClick(app.trash, mouseX, mouseY):
         print("in for loop")
 
 # handle keypress
