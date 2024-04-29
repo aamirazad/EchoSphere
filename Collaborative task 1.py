@@ -163,7 +163,7 @@ def submitTweet():
 
 
 def checkClick(object, mouseX, mouseY):
-    return object.hits(mouseX,mouseY) and object.visible
+    return (object.hits(mouseX,mouseY) and object.visible)
 
 def onMousePress(mouseX,mouseY):
     if new_post.hits(mouseX,mouseY) and new_post.visible:
