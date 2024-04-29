@@ -78,7 +78,6 @@ def printTweets():
             lineYVal = (count * 30) + (yVal+35)
             message.add(Label(line,username.right,lineYVal,size=20))
             message.left = 70
-        #Trash=Circle(270,,20)
         Trash=Group(Line(330,lineYVal-15,340,lineYVal-5),Line(340,lineYVal-15,330,lineYVal-5))
         Trash.id = tweet[0]
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
