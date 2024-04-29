@@ -181,10 +181,13 @@ def onMousePress(mouseX,mouseY):
         submitTweet()
     
     elif checkClick(app.up_arrow, mouseX, mouseY):
+        if tweet.top==app.header.bottom:
+            for tweet in app.full_tweet:
+                tweet.centerY+=0
+                app.header.toFront()
         for tweet in app.full_tweet:
             tweet.centerY += 150
             app.header.toFront()
-    
     elif checkClick(app.down_arrow, mouseX, mouseY):
         for tweet in app.full_tweet:
             tweet.centerY -= 150
