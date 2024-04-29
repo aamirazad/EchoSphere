@@ -25,6 +25,7 @@ app.tweetPage = Group()
 app.tweetBox = Group()
 app.signIn = Group()
 app.full_tweet = Group()
+app.trash = Group()
 
 Backarrow=Group(Polygon(12,25,25,15,25,35),Line(25,25,45,25))
 drafts= Label('Drafts',260,30,size=15,bold=True)
@@ -80,6 +81,7 @@ def printTweets():
             message.left = 70
         Trash=Group(Line(330,lineYVal-15,340,lineYVal-5),Line(340,lineYVal-15,330,lineYVal-5))
         Trash.id = tweet[0]
+        app.trash.add(Trash)
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         yVal = barline.bottom
         app.full_tweet.add(icon,username,message, barline,Trash)
