@@ -189,7 +189,6 @@ def onMousePress(mouseX,mouseY):
         app.header.toFront()
     for x in app.trash:
         if checkClick(x, mouseX, mouseY):
-            print("Deleting..")
             connection = sqlite3.connect("database.db")
             connection.execute("DELETE FROM Tweets WHERE id = ?", (x.db_id,))
             connection.commit()
