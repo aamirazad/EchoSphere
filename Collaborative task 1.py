@@ -101,7 +101,7 @@ def createIcon(name):
     save(identicon, name + "_icon.png", 500, 500)
     app.icon = name + "_icon.png"
 
-# ui manager
+
 def handlePage(page):
     app.tweetPage.visible = False
     app.tweetBox.visible = False
