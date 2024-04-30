@@ -193,8 +193,9 @@ def onMousePress(mouseX,mouseY):
             tweet.centerY -= 150
         app.header.toFront()
     for x in app.trash:
-        print("check")
-        print(checkClick(x, mouseX, mouseY))
+        if checkClick(x, mouseX, mouseY):
+            print(x.db_id)
+           
 
 # handle keypress
 def onKeyPress(key):
