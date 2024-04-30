@@ -155,10 +155,6 @@ def submitTweet():
         connection.commit()
         connection.close()
         go_home_page()
-    else:
-        error = Label("You're not signed in!", 200,200, size=30)
-        sleep(2)
-        error.visible = False
 
 
 def checkClick(object, mouseX, mouseY):
