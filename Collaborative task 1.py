@@ -222,7 +222,7 @@ def onKeyPress(key):
         elif key == "enter":
             if app.text.count("\n") < 2:
                 app.text += "\n"
-        valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789.!'
+        valid_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789.!\''
         list_of_valid_characters = list(valid_characters)
         if key in list_of_valid_characters:
             lines = app.text.splitlines()
