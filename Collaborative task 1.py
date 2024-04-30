@@ -68,6 +68,7 @@ def printTweets():
     yVal = 80
     app.tweetPage.clear()
     app.full_tweet.clear()
+    app.trash.clear()
     db = query_db("SELECT * FROM Tweets")
     for tweet in db:
         icon = Image(tweet[1] + "_icon.png", 20,yVal+10)
@@ -84,10 +85,10 @@ def printTweets():
         app.trash.add(trash_x)
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         yVal = barline.bottom
-        app.full_tweet.add(icon,username,message, barline, trash_x)
+        app.full_tweet.add(icon,username,message, barline)
     app.up_arrow = Polygon(360,90,370,110,350,110)
     app.down_arrow = Polygon(350,270,370,270,360,290)
-    app.tweetPage.add(app.full_tweet, app.up_arrow, app.down_arrow)
+    app.tweetPage.add(app.full_tweet, app.up_arrow, app.down_arrow, app.trash)
 printTweets()
 
 def createIcon(name):
@@ -194,6 +195,7 @@ def onMousePress(mouseX,mouseY):
         app.header.toFront()
     for x in app.trash:
         if checkClick(x, mouseX, mouseY):
+            print("Deleting..")
             query_db("DELETE FROM Tweets WHERE id=?", x.db_id)
             printTweets()
            
