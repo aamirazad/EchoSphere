@@ -79,12 +79,10 @@ def printTweets():
             lineYVal = (count * 30) + (yVal+35)
             message.add(Label(line,username.right,lineYVal,size=20))
             message.left = 70
-        Trash=Label("X", 330,lineYVal-20, size=20, fill="green")
-        Trash.id = tweet[0]
-        app.trash.add(Trash)
+        app.trash.add(Label("X", 330,lineYVal-20, size=20, fill="green", db_id=tweet[0]))
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         yVal = barline.bottom
-        app.full_tweet.add(icon,username,message, barline,Trash)
+        app.full_tweet.add(icon,username,message, barline, app.trash)
     app.up_arrow = Polygon(360,90,370,110,350,110)
     app.down_arrow = Polygon(350,270,370,270,360,290)
     app.tweetPage.add(app.full_tweet, app.up_arrow, app.down_arrow)
