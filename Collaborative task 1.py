@@ -194,6 +194,7 @@ def onMousePress(mouseX,mouseY):
             connection.commit()
             connection.close()
             printTweets()
+
 def onKeyPress(key):
     if app.signIn.visible:
         if key == "backspace":
