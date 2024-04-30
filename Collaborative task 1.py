@@ -88,7 +88,7 @@ def printTweets():
         app.full_tweet.add(icon,username,message, barline)
     app.up_arrow = Polygon(360,90,370,110,350,110)
     app.down_arrow = Polygon(350,270,370,270,360,290)
-    app.tweetPage.add(app.full_tweet, app.up_arrow, app.down_arrow)
+    app.tweetPage.add(app.full_tweet, app.up_arrow, app.down_arrow, app.trash)
 printTweets()
 
 def createIcon(name):
