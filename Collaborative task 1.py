@@ -78,8 +78,8 @@ def printTweets():
         message = Group()
         for count, line in enumerate(tweet[3].splitlines()):
             lineYVal = (count * 30) + (yVal+35)
-            message.add(Label(line,username.right,lineYVal,size=20))
-            message.left = 70
+            message.add(Label(line,4000,lineYVal,size=20))
+            message.left = username.centerX
         trash_x = Label("X", 330,lineYVal-20, size=20, fill="black")
         trash_x.db_id = tweet[0]
         app.trash.add(trash_x)
