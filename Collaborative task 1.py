@@ -2,7 +2,7 @@ import sqlite3
 from datetime import datetime
 from identicons import generate, save
 from cmu_graphics import *
-
+# new by Adrien Coquet from Noun Project (CC BY 3.0)
 new_post = Image('new_icon.png', 330, 330)
 signInButton = Image('sign_in2.png', 5,5)
 signInButton.centerX = 20
