@@ -82,13 +82,13 @@ def printTweets():
             message.left = 70
         trash_x = Label("X", 330,lineYVal-20, size=20, fill="green")
         trash_x.db_id = tweet[0]
-        app.trash.add(trash_x)
         barline=Line(0,message.bottom+30,400,message.bottom+30,opacity=30)
         yVal = barline.bottom
-        app.full_tweet.add(icon,username,message, barline)
+        app.full_tweet.add(icon,username,message, barline, trash_x)
+        app.trash.add(trash_x)
     app.up_arrow = Polygon(360,90,370,110,350,110)
     app.down_arrow = Polygon(350,270,370,270,360,290)
-    app.tweetPage.add(app.full_tweet, app.up_arrow, app.down_arrow, app.trash)
+    app.tweetPage.add(app.full_tweet, app.up_arrow, app.down_arrow)
 printTweets()
 
 def createIcon(name):
@@ -197,7 +197,7 @@ def onMousePress(mouseX,mouseY):
         if checkClick(x, mouseX, mouseY):
             print("Deleting..")
             connection = sqlite3.connect("database.db")
-            connection.execute("DELETE FROM Tweets WHERE id = ?", x.db_id)
+            connection.execute("DELETE FROM Tweets WHERE id = ?", (x.db_id,))
             connection.commit()
             connection.close()
             printTweets()
